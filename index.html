@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pokédex Kanto | Pokémon Champions Calculator</title>
-    <meta name="description" content="Calculadora de estadísticas, naturalezas, SP y movimientos para Pokémon Champions con estética de Pokédex clásica de Kanto.">
+    <title>Rotom Dex | Pokédex & Calculadora Pokémon Champions</title>
+    <meta name="description" content="Pokédex estilo Rotom Smartphone y calculadora de estadísticas, naturalezas, SP y cobertura defensiva de equipos para Pokémon Champions.">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,700&family=Outfit:wght@300;400;500;600;700;800&family=Press+Start+2P&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,700&family=Outfit:wght@300;400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
@@ -18,615 +17,576 @@
     <!-- Vue 3 CDN -->
     <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
 </head>
-
 <body>
 
-    <div id="app">
-        <!-- PANTALLA DE CARGA -->
-        <div v-if="loading" class="loading-container">
-            <div class="pokeball-spinner"></div>
-            <div class="loading-text">Iniciando Pokédex Kanto...</div>
+    <div id="app" class="rotom-device-wrapper" v-cloak>
+        
+        <!-- CUERNOS / ANTENA ELÉCTRICA ROTOM SUPERIOR -->
+        <div class="rotom-horns-container">
+            <div class="rotom-ear left"></div>
+            <div class="rotom-antenna-center"></div>
+            <div class="rotom-ear right"></div>
         </div>
 
-        <!-- PANTALLA DE ERROR -->
-        <div v-else-if="error" class="loading-container">
-            <div class="pokeball-spinner" style="filter: grayscale(1);"></div>
-            <div class="loading-text" style="color: #ff4d64;">{{ error }}</div>
-            <button class="retro-key-btn blue" @click="loadAllData" style="margin-top: 15px; padding: 10px 20px; font-size: 0.9rem;">
-                ↻ Reintentar Conexión
-            </button>
-        </div>
-
-        <!-- CHASIS FÍSICO DE LA POKÉDEX -->
-        <main v-else class="pokedex-chassis">
-
-            <!-- BARRA SUPERIOR DE HARDWARE -->
-            <header class="pokedex-top-bar">
-                <div class="sensor-cluster">
-                    <!-- Sensor / Lente Azul Principal -->
-                    <div class="main-lens-bezel" @click="playSound('pokedex_scan')" title="Sensor Óptico Pokédex">
-                        <div class="main-lens-core"></div>
+        <!-- CUERPO PRINCIPAL DEL ROTOM SMARTPHONE -->
+        <main class="rotom-phone-body">
+            
+            <!-- CABECERA ROTOM HUD -->
+            <header class="rotom-top-bar">
+                <div class="rotom-mascot-group">
+                    <div class="rotom-face-badge" @click="playSound('beep')" title="¡Rotom Smartphone OS!">
+                        <div class="rotom-eyes">
+                            <div class="rotom-eye"></div>
+                            <div class="rotom-eye"></div>
+                        </div>
                     </div>
-
-                    <!-- LEDs Indicadores -->
-                    <div class="indicator-leds">
-                        <div class="led-indicator red" title="LED Diagnóstico"></div>
-                        <div class="led-indicator yellow" title="LED Batería / Estado"></div>
-                        <div class="led-indicator green" title="LED Conexión Champions"></div>
+                    <div class="rotom-brand-text">
+                        <h1>ROTOM <span class="cyan">DEX</span></h1>
+                        <p>CHAMPIONS BATTLE & TEAM OS</p>
                     </div>
                 </div>
 
-                <div class="pokedex-brand">
-                    <h1 class="brand-title">
-                        <span>POKÉDEX</span>
-                        <span style="color: var(--accent-gold);">KANTO</span>
-                    </h1>
-                    <div class="brand-subtitle">CHAMPIONS BATTLE COMPUTER</div>
-                    <button 
-                        class="sound-toggle-btn" 
-                        :class="{ muted: !soundEnabled }" 
-                        @click="toggleSound"
-                        :title="soundEnabled ? 'Silenciar sonidos' : 'Activar efectos de sonido'"
-                    >
+                <div class="rotom-system-controls">
+                    <button class="sound-btn" :class="{ muted: !soundEnabled }" @click="toggleSound">
                         <span>{{ soundEnabled ? '🔊 AUDIO ON' : '🔇 AUDIO OFF' }}</span>
                     </button>
                 </div>
             </header>
 
-            <!-- SELECTOR DE PESTAÑAS PARA MÓVILES -->
-            <nav class="mobile-tab-nav" aria-label="Navegación Móvil">
-                <button 
-                    class="tab-btn" 
-                    :class="{ active: mobileTab === 'screen1' }" 
-                    @click="mobileTab = 'screen1'; playSound('click')"
-                >
-                    📟 VISOR POKÉMON
-                </button>
-                <button 
-                    class="tab-btn" 
-                    :class="{ active: mobileTab === 'screen2' }" 
-                    @click="mobileTab = 'screen2'; playSound('click')"
-                >
-                    ⚡ CALCULADORA SP
-                </button>
-            </nav>
+            <!-- PANTALLA DE CARGA -->
+            <div v-if="loading" class="rotom-loading-screen">
+                <div class="rotom-loading-rotator"></div>
+                <div class="loading-title">Sincronizando Rotom Dex...</div>
+                <p style="color: var(--text-secondary); font-size: 0.85rem;">Cargando datos oficiales de Pokémon Champions...</p>
+            </div>
 
-            <!-- CONTENEDOR DUAL DE PANELES (LADO A LADO) -->
-            <div class="pokedex-panels-container">
+            <!-- PANTALLA DE ERROR -->
+            <div v-else-if="error" class="rotom-loading-screen">
+                <div style="font-size: 2.5rem;">⚠️</div>
+                <div class="loading-title" style="color: var(--color-danger);">{{ error }}</div>
+                <button class="team-action-btn primary" @click="loadAllData" style="margin-top: 12px;">
+                    ↻ Reintentar Conexión
+                </button>
+            </div>
+
+            <!-- INTERFAZ PRINCIPAL ACTIVA -->
+            <div v-else>
+
+                <!-- DOCK DE LAS 3 PESTAÑAS PRINCIPALES -->
+                <nav class="rotom-tab-dock" aria-label="Pestañas de la Aplicación">
+                    <button 
+                        class="dock-tab-btn" 
+                        :class="{ active: activeTab === 'info' }" 
+                        @click="switchTab('info')"
+                    >
+                        <span>📱 1. INFORMACIÓN</span>
+                    </button>
+                    <button 
+                        class="dock-tab-btn" 
+                        :class="{ active: activeTab === 'calc' }" 
+                        @click="switchTab('calc')"
+                    >
+                        <span>⚡ 2. CÁLCULO SP</span>
+                    </button>
+                    <button 
+                        class="dock-tab-btn" 
+                        :class="{ active: activeTab === 'team' }" 
+                        @click="switchTab('team')"
+                    >
+                        <span>🛡️ 3. EQUIPO ({{ filledTeamCount }}/6)</span>
+                    </button>
+                </nav>
 
                 <!-- ========================================================
-                     PANEL IZQUIERDO: VISOR DE POKÉMON & NAVEGACIÓN
+                     BARRA DE BÚSQUEDA Y FILTROS (Generación + Tipo + Nombre/ID)
                      ======================================================== -->
-                <section 
-                    class="pokedex-panel left-panel" 
-                    :class="{ 'active-mobile-panel': mobileTab === 'screen1' }"
-                >
-                    <!-- Marco Biselado de la Pantalla Principal -->
-                    <div class="screen-bezel">
-                        <div class="bezel-top-sensors">
-                            <div class="bezel-dot"></div>
-                            <div class="bezel-dot"></div>
-                        </div>
-
-                        <!-- Pantalla Digital LCD CRT -->
-                        <div class="main-screen-display" v-if="selectedPokemon">
-                            <div class="screen-header">
-                                <div>
-                                    <h2 class="pokemon-name-title">{{ selectedPokemon.name }}</h2>
-                                    <div class="pokemon-form-tag" v-if="selectedPokemon.form && selectedPokemon.form !== 'Base'">
-                                        FORMA: {{ selectedPokemon.form }}
-                                    </div>
-                                </div>
-                                <span class="dex-number-badge">
-                                    #{{ String(selectedPokemon.dexNumber).padStart(3, '0') }}
-                                </span>
-                            </div>
-
-                            <!-- Viewport con Artwork Oficial -->
-                            <div class="artwork-viewport">
-                                <img 
-                                    :src="pokemonArtwork" 
-                                    :alt="selectedPokemon.name"
-                                    class="pokemon-artwork-img"
-                                    loading="lazy"
-                                    @error="$event.target.src = pokemonSprite"
-                                >
-                                <img 
-                                    v-if="pokemonSprite" 
-                                    :src="pokemonSprite" 
-                                    alt="Mini Sprite" 
-                                    class="animated-sprite-badge"
-                                >
-                            </div>
-
-                            <!-- Tipos Oficiales -->
-                            <div class="type-badges-row">
-                                <span 
-                                    v-for="type in selectedPokemon.types" 
-                                    :key="type" 
-                                    class="type-pill"
-                                    :style="{ backgroundColor: TYPE_COLORS[type] || '#777' }"
-                                >
-                                    {{ TRANSLATIONS.types[type] || type }}
-                                </span>
-                            </div>
-
-                            <!-- Habilidades Verificadas -->
-                            <div class="screen-details-box">
-                                <div class="section-label">
-                                    <span>◈ HABILIDADES DISPONIBLES</span>
-                                </div>
-                                <div class="abilities-list">
-                                    <div 
-                                        v-for="ab in verifiedAbilities" 
-                                        :key="ab.name" 
-                                        class="ability-pill-card"
-                                    >
-                                        <div class="ability-name">
-                                            <span>{{ ab.name }}</span>
-                                            <span class="verified-icon" title="Champions Verificado">✓</span>
-                                        </div>
-                                        <p class="ability-desc">{{ ab.description }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Acentos inferiores del Bisel -->
-                        <div class="bezel-bottom-accents">
-                            <button class="bezel-big-btn" @click="playSound('beep')" title="Botón de escaneo"></button>
-                            <div class="bezel-speaker-vents">
-                                <div class="vent-line"></div>
-                                <div class="vent-line"></div>
-                                <div class="vent-line"></div>
-                            </div>
-                        </div>
+                <section class="rotom-filter-hub" v-if="activeTab !== 'team'">
+                    <!-- Buscador de texto -->
+                    <div class="search-field-container">
+                        <span class="search-icon">🔍</span>
+                        <input 
+                            type="text" 
+                            v-model="searchQuery" 
+                            class="rotom-search-input" 
+                            placeholder="Buscar por nombre o # Pokédex..."
+                        >
                     </div>
 
-                    <!-- CONTROLES DE NAVEGACIÓN & BÚSQUEDA -->
-                    <div class="left-panel-controls">
-                        <!-- Buscador y Filtro por Tipo -->
-                        <div class="search-control-group">
-                            <div class="pokedex-input-wrapper">
-                                <span class="search-icon">🔍</span>
-                                <input 
-                                    type="text" 
-                                    v-model="searchQuery" 
-                                    class="pokedex-search-input" 
-                                    placeholder="Buscar por nombre o #..."
-                                >
-                            </div>
-                            <select v-model="selectedTypeFilter" class="type-filter-select" @change="playSound('click')">
-                                <option value="">Todos los Tipos</option>
-                                <option v-for="t in typesList" :key="t" :value="t">
-                                    {{ TRANSLATIONS.types[t] || t }}
-                                </option>
-                            </select>
-                        </div>
+                    <!-- Filtro por Generación -->
+                    <div class="filter-select-group">
+                        <select v-model="selectedGenFilter" class="rotom-select" @change="playSound('click')">
+                            <option v-for="gen in GENERATIONS" :key="gen.id" :value="gen.id">
+                                {{ gen.name }}
+                            </option>
+                        </select>
 
-                        <!-- Selector Rápido de Pokémon -->
+                        <!-- Filtro por Tipo -->
+                        <select v-model="selectedTypeFilter" class="rotom-select" @change="playSound('click')">
+                            <option value="">Todos los Tipos</option>
+                            <option v-for="t in typesList" :key="t" :value="t">
+                                {{ TRANSLATIONS.types[t] || t }}
+                            </option>
+                        </select>
+                    </div>
+
+                    <!-- Selector Rápido y Navegación D-Pad -->
+                    <div class="quick-pokemon-nav">
+                        <button class="nav-arrow-btn" @click="selectPrevPokemon" title="Anterior Pokémon">◀</button>
                         <select 
-                            class="pokemon-quick-select" 
+                            class="rotom-select" 
                             :value="selectedPokemon?.name" 
                             @change="e => {
                                 const found = roster.find(p => p.name === e.target.value);
                                 if (found) selectPokemon(found);
                             }"
+                            style="max-width: 170px;"
                         >
                             <option v-for="p in filteredRoster" :key="p.name + p.form" :value="p.name">
-                                #{{ String(p.dexNumber).padStart(3, '0') }} - {{ p.name }} {{ p.form !== 'Base' ? '(' + p.form + ')' : '' }}
+                                #{{ String(p.dexNumber).padStart(3, '0') }} {{ p.name }}
                             </option>
                         </select>
-
-                        <!-- D-Pad Clásico y Botones Retro -->
-                        <div class="dpad-actions-container">
-                            <div class="dpad-cross">
-                                <button class="dpad-btn dpad-up" @click="selectPrevPokemon" title="Anterior Pokémon">▲</button>
-                                <button class="dpad-btn dpad-down" @click="selectNextPokemon" title="Siguiente Pokémon">▼</button>
-                                <button class="dpad-btn dpad-left" @click="selectPrevPokemon" title="Anterior Pokémon">◀</button>
-                                <button class="dpad-btn dpad-right" @click="selectNextPokemon" title="Siguiente Pokémon">▶</button>
-                                <div class="dpad-center"></div>
-                            </div>
-
-                            <div class="action-pills-cluster">
-                                <div class="action-pill-row">
-                                    <button class="retro-key-btn green" @click="selectPrevPokemon">◀ PREV</button>
-                                    <button class="retro-key-btn blue" @click="selectNextPokemon">NEXT ▶</button>
-                                </div>
-                                <div class="action-pill-row">
-                                    <button class="retro-key-btn orange" @click="resetSp" style="width: 100%;">
-                                        ↺ RESET STATS
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                        <button class="nav-arrow-btn" @click="selectNextPokemon" title="Siguiente Pokémon">▶</button>
                     </div>
                 </section>
 
                 <!-- ========================================================
-                     BISAGRA METÁLICA CENTRAL 3D
+                     PESTAÑA 1: INFORMACIÓN DEL POKÉMON
                      ======================================================== -->
-                <div class="pokedex-hinge" aria-hidden="true">
-                    <div class="hinge-groove"></div>
-                    <div class="hinge-groove"></div>
-                    <div class="hinge-groove"></div>
-                    <div class="hinge-groove"></div>
-                    <div class="hinge-groove"></div>
-                </div>
+                <section v-if="activeTab === 'info' && selectedPokemon" class="tab-content-container">
+                    <div class="two-col-dashboard">
+                        
+                        <!-- Columna Izquierda: Visor Holográfico, Tipos y Habilidades -->
+                        <div>
+                            <div class="pokemon-hologram-frame">
+                                <div class="hologram-dex-number">#{{ String(selectedPokemon.dexNumber).padStart(3, '0') }}</div>
+                                <div class="hologram-name">{{ selectedPokemon.name }}</div>
 
-                <!-- ========================================================
-                     PANEL DERECHO: COMPUTADORA DE BATALLA Y CALCULADORA SP
-                     ======================================================== -->
-                <section 
-                    class="pokedex-panel right-panel" 
-                    :class="{ 'active-mobile-panel': mobileTab === 'screen2' }"
-                >
-                    <!-- CONFIGURACIÓN: NATURALEZA & OBJETO -->
-                    <div class="calc-card-container">
-                        <div class="calc-card-header">
-                            <h3 class="calc-title">
-                                <span>⚙ CONFIGURACIÓN DE BATALLA</span>
-                            </h3>
-                            <span class="calc-badge" style="background: rgba(42, 232, 184, 0.15); color: var(--screen-lcd);">
-                                CHAMPIONS RULES
-                            </span>
-                        </div>
-
-                        <div class="setup-dual-grid">
-                            <!-- Naturaleza -->
-                            <div class="setup-field">
-                                <label class="field-label">Naturaleza:</label>
-                                <select 
-                                    class="pokedex-select" 
-                                    :value="selectedNature?.name" 
-                                    @change="e => selectNatureByName(e.target.value)"
+                                <img 
+                                    :src="pokemonArtwork" 
+                                    :alt="selectedPokemon.name"
+                                    class="pokemon-hero-img"
+                                    loading="lazy"
+                                    @error="$event.target.src = pokemonSprite"
                                 >
-                                    <option v-for="nat in natures" :key="nat.name" :value="nat.name">
-                                        {{ nat.name }} 
-                                        {{ nat.increasedStat ? '(+' + TRANSLATIONS.stats[Object.keys(TRANSLATIONS.natureStatKeys).find(k => TRANSLATIONS.natureStatKeys[k] === nat.increasedStat)] + ' / -' + TRANSLATIONS.stats[Object.keys(TRANSLATIONS.natureStatKeys).find(k => TRANSLATIONS.natureStatKeys[k] === nat.decreasedStat)] + ')' : '(Neutro)' }}
-                                    </option>
-                                </select>
-                                <div class="nature-indicator-row" v-if="selectedNature">
-                                    <span v-if="selectedNature.increasedStat" class="nature-tag-up">
-                                        ↑ {{ TRANSLATIONS.stats[Object.keys(TRANSLATIONS.natureStatKeys).find(k => TRANSLATIONS.natureStatKeys[k] === selectedNature.increasedStat)] }} (+10%)
-                                    </span>
-                                    <span v-if="selectedNature.decreasedStat" class="nature-tag-down">
-                                        ↓ {{ TRANSLATIONS.stats[Object.keys(TRANSLATIONS.natureStatKeys).find(k => TRANSLATIONS.natureStatKeys[k] === selectedNature.decreasedStat)] }} (-10%)
-                                    </span>
-                                    <span v-if="!selectedNature.increasedStat" style="color: var(--screen-text-dim);">
-                                        Naturaleza Neutral
+                                
+                                <img 
+                                    v-if="pokemonSprite" 
+                                    :src="pokemonSprite" 
+                                    alt="Mini Sprite" 
+                                    class="animated-sprite-tag"
+                                >
+
+                                <div class="type-pills-row">
+                                    <span 
+                                        v-for="type in selectedPokemon.types" 
+                                        :key="type" 
+                                        class="type-pill"
+                                        :style="{ backgroundColor: TYPE_COLORS[type] || '#777' }"
+                                    >
+                                        {{ TRANSLATIONS.types[type] || type }}
                                     </span>
                                 </div>
                             </div>
 
-                            <!-- Objeto Equipado -->
-                            <div class="setup-field">
-                                <label class="field-label">Objeto Equipable:</label>
-                                <select class="pokedex-select" v-model="selectedItem" @change="playSound('click')">
-                                    <option value="">Ningún Objeto</option>
-                                    <option v-for="it in items" :key="it.name" :value="it.name">
-                                        {{ it.name }}
-                                    </option>
-                                </select>
+                            <!-- Botón para añadir directamente al equipo -->
+                            <button class="team-action-btn primary" @click="addCurrentPokemonToTeam" style="width: 100%; margin-bottom: 14px; justify-content: center; padding: 10px;">
+                                ➕ Añadir {{ selectedPokemon.name }} al Equipo (Pestaña 3)
+                            </button>
+
+                            <!-- Habilidades de Champions -->
+                            <div class="rotom-card">
+                                <div class="card-header">
+                                    <h3 class="card-title">✨ HABILIDADES</h3>
+                                    <span class="card-badge">VERIFICADAS</span>
+                                </div>
+                                <div v-for="ab in verifiedAbilities" :key="ab.name" class="ability-pill-card">
+                                    <div class="ability-name">
+                                        <span>{{ ab.name }}</span>
+                                        <span v-if="ab.championsVerified" style="color: var(--color-success);">✓ Verificada</span>
+                                    </div>
+                                    <div class="ability-desc">{{ ab.description }}</div>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- Banner descriptivo del Objeto -->
-                        <div v-if="selectedItemInfo" class="item-effect-banner">
-                            <strong>{{ selectedItemInfo.name }}:</strong> {{ selectedItemInfo.description }}
+                        <!-- Columna Derecha: Estadísticas Base & Efectividades Individuales -->
+                        <div>
+                            <!-- Estadísticas Base -->
+                            <div class="rotom-card">
+                                <div class="card-header">
+                                    <h3 class="card-title">📊 ESTADÍSTICAS BASE</h3>
+                                    <span class="card-badge">TOTAL: {{ baseStats.total }}</span>
+                                </div>
+                                <div class="stats-list">
+                                    <div v-for="(label, key) in TRANSLATIONS.stats" :key="key" class="stat-item">
+                                        <span class="stat-name">{{ label }}</span>
+                                        <span class="stat-val">{{ baseStats[key] }}</span>
+                                        <div class="stat-bar-track">
+                                            <div 
+                                                class="stat-bar-fill" 
+                                                :style="{ width: Math.min(100, (baseStats[key] / 200) * 100) + '%' }"
+                                            ></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Matriz de Efectividades Defensivas Individuales -->
+                            <div class="rotom-card">
+                                <div class="card-header">
+                                    <h3 class="card-title">🛡️ EFECTIVIDADES DEFENSIVAS</h3>
+                                    <span class="card-badge">TABLA DE TIPOS</span>
+                                </div>
+                                <div class="effectiveness-grid">
+                                    <!-- Súper Débil x4 -->
+                                    <div v-if="typeEffectiveness.superWeak.length" class="eff-row">
+                                        <div class="eff-row-label" style="color: var(--color-danger);">⚠️ SÚPER DÉBIL (×4)</div>
+                                        <div class="eff-chips-container">
+                                            <div v-for="item in typeEffectiveness.superWeak" :key="item.type" class="eff-chip" :style="{ backgroundColor: item.color }">
+                                                <span>{{ item.nameEs }}</span>
+                                                <span class="mult">×4</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Débil x2 -->
+                                    <div v-if="typeEffectiveness.weak.length" class="eff-row">
+                                        <div class="eff-row-label" style="color: var(--color-danger);">🔻 DÉBIL (×2)</div>
+                                        <div class="eff-chips-container">
+                                            <div v-for="item in typeEffectiveness.weak" :key="item.type" class="eff-chip" :style="{ backgroundColor: item.color }">
+                                                <span>{{ item.nameEs }}</span>
+                                                <span class="mult">×2</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Resistente x0.5 -->
+                                    <div v-if="typeEffectiveness.resistant.length" class="eff-row">
+                                        <div class="eff-row-label" style="color: var(--color-success);">🛡 RESISTENTE (×0.5)</div>
+                                        <div class="eff-chips-container">
+                                            <div v-for="item in typeEffectiveness.resistant" :key="item.type" class="eff-chip" :style="{ backgroundColor: item.color }">
+                                                <span>{{ item.nameEs }}</span>
+                                                <span class="mult">×0.5</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Súper Resistente x0.25 -->
+                                    <div v-if="typeEffectiveness.superResistant.length" class="eff-row">
+                                        <div class="eff-row-label" style="color: var(--color-success);">🔰 SÚPER RESISTENTE (×0.25)</div>
+                                        <div class="eff-chips-container">
+                                            <div v-for="item in typeEffectiveness.superResistant" :key="item.type" class="eff-chip" :style="{ backgroundColor: item.color }">
+                                                <span>{{ item.nameEs }}</span>
+                                                <span class="mult">×0.25</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Inmune x0 -->
+                                    <div v-if="typeEffectiveness.immune.length" class="eff-row">
+                                        <div class="eff-row-label" style="color: var(--color-immune);">✨ INMUNE (×0)</div>
+                                        <div class="eff-chips-container">
+                                            <div v-for="item in typeEffectiveness.immune" :key="item.type" class="eff-chip" :style="{ backgroundColor: item.color }">
+                                                <span>{{ item.nameEs }}</span>
+                                                <span class="mult">×0</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
                     </div>
+                </section>
 
-                    <!-- ASIGNADOR DE PUNTOS SP Y TABLA DE STATS -->
-                    <div class="calc-card-container">
-                        <div class="calc-card-header">
-                            <h3 class="calc-title">
-                                <span>📊 ASIGNACIÓN DE STAT POINTS (SP)</span>
-                            </h3>
-                            <span class="calc-badge" style="background: rgba(255, 203, 5, 0.15); color: var(--accent-gold);">
-                                POOL: 66 SP MÁX
-                            </span>
-                        </div>
-
-                        <!-- Barra de Medición de Energía SP -->
-                        <div class="sp-meter-container">
-                            <div class="sp-meter-header">
-                                <span>SP ASIGNADOS: <strong class="sp-counter-used">{{ spUsed }} / 66</strong></span>
-                                <span>RESTANTES: <strong class="sp-counter-remain">{{ spRemaining }}</strong></span>
-                            </div>
-                            <div class="sp-progress-bar-track">
-                                <div 
-                                    class="sp-progress-bar-fill" 
-                                    :style="{ width: ((spUsed / 66) * 100) + '%' }"
-                                ></div>
-                            </div>
-                        </div>
-
-                        <!-- Presets Rápidos -->
-                        <div class="sp-presets-bar">
-                            <span style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--screen-lcd); align-self: center; margin-right: 4px;">
-                                PRESETS:
-                            </span>
-                            <button class="preset-chip" @click="applyPreset('sweeper_phys')">⚡ Sweeper Físico (32 Atk / 32 Spe / 2 HP)</button>
-                            <button class="preset-chip" @click="applyPreset('sweeper_spec')">🔮 Sweeper Especial (32 SpA / 32 Spe / 2 HP)</button>
-                            <button class="preset-chip" @click="applyPreset('tank_phys')">🛡 Tanque Físico (32 HP / 32 Def / 2 SpD)</button>
-                            <button class="preset-chip" @click="applyPreset('tank_spec')">✨ Tanque Especial (32 HP / 32 SpD / 2 Def)</button>
-                            <button class="preset-chip reset" @click="resetSp">↺ Limpiar SP</button>
-                        </div>
-
-                        <!-- Tabla Reactiva de Estadísticas -->
-                        <div class="stats-table-wrapper">
-                            <div class="stats-table-header">
-                                <span>STAT</span>
-                                <span>BASE</span>
-                                <span>SP (0-32)</span>
-                                <span>FINAL</span>
-                                <span>MEDIDOR</span>
-                            </div>
-
-                            <!-- Fila por cada estadística -->
-                            <div 
-                                v-for="(label, key) in TRANSLATIONS.stats" 
-                                :key="key" 
-                                class="stat-row-card"
-                            >
-                                <div class="stat-label-col">
-                                    <span>{{ label }}</span>
-                                    <span v-if="getNatureMultiplier(key) === 1.1" class="stat-arrow-up">▲</span>
-                                    <span v-else-if="getNatureMultiplier(key) === 0.9" class="stat-arrow-down">▼</span>
+                <!-- ========================================================
+                     PESTAÑA 2: CÁLCULO DE STAT POINTS (SP) Y SET DE COMBATE
+                     ======================================================== -->
+                <section v-if="activeTab === 'calc' && selectedPokemon" class="tab-content-container">
+                    <div class="two-col-dashboard">
+                        
+                        <!-- Columna Izquierda: Configuración de Naturaleza, Objeto y Asignación de SP -->
+                        <div>
+                            <!-- Configuración de Batalla -->
+                            <div class="rotom-card">
+                                <div class="card-header">
+                                    <h3 class="card-title">⚙ NATURALEZA & OBJETO</h3>
+                                    <span class="card-badge">CHAMPIONS LV. 50</span>
                                 </div>
                                 
-                                <div class="stat-base-col">
-                                    {{ baseStats[key] }}
+                                <div style="margin-bottom: 12px;">
+                                    <label style="font-size: 0.8rem; color: var(--text-secondary); display: block; margin-bottom: 4px;">Naturaleza:</label>
+                                    <select class="rotom-select" style="width: 100%;" :value="selectedNature?.name" @change="e => selectNatureByName(e.target.value)">
+                                        <option v-for="nat in natures" :key="nat.name" :value="nat.name">
+                                            {{ nat.name }} 
+                                            {{ nat.increasedStat ? '(+' + TRANSLATIONS.stats[Object.keys(TRANSLATIONS.natureStatKeys).find(k => TRANSLATIONS.natureStatKeys[k] === nat.increasedStat)] + ' / -' + TRANSLATIONS.stats[Object.keys(TRANSLATIONS.natureStatKeys).find(k => TRANSLATIONS.natureStatKeys[k] === nat.decreasedStat)] + ')' : '(Neutro)' }}
+                                        </option>
+                                    </select>
                                 </div>
 
-                                <!-- Controles Stepper SP -->
-                                <div class="sp-stepper-control">
-                                    <button 
-                                        class="stepper-btn" 
-                                        @click="modifySp(key, -1)" 
-                                        :disabled="spPoints[key] <= 0"
-                                        title="Reducir 1 SP"
-                                    >−</button>
-
-                                    <span class="sp-value-badge">{{ spPoints[key] }}</span>
-
-                                    <button 
-                                        class="stepper-btn" 
-                                        @click="modifySp(key, 1)" 
-                                        :disabled="spPoints[key] >= 32 || spRemaining <= 0"
-                                        title="Añadir 1 SP"
-                                    >+</button>
-
-                                    <button 
-                                        class="stepper-max-btn" 
-                                        @click="setStatSp(key, 32)"
-                                        :disabled="spPoints[key] >= 32 || spRemaining <= 0"
-                                        title="Asignar máximo 32 SP"
-                                    >MAX</button>
-                                </div>
-
-                                <div class="stat-final-col">
-                                    {{ finalStats[key] }}
-                                </div>
-
-                                <!-- Barra Visual de Progreso -->
-                                <div class="stat-bar-col">
-                                    <div class="stat-bar-track">
-                                        <div 
-                                            class="stat-bar-fill" 
-                                            :class="{ 
-                                                up: getNatureMultiplier(key) === 1.1, 
-                                                down: getNatureMultiplier(key) === 0.9 
-                                            }"
-                                            :style="{ width: getStatBarPercent(key) + '%' }"
-                                        ></div>
+                                <div>
+                                    <label style="font-size: 0.8rem; color: var(--text-secondary); display: block; margin-bottom: 4px;">Objeto Equipado:</label>
+                                    <select class="rotom-select" style="width: 100%;" v-model="selectedItem" @change="playSound('click')">
+                                        <option value="">-- Sin Objeto Equipado --</option>
+                                        <option v-for="it in items" :key="it.name" :value="it.name">
+                                            {{ it.name }}
+                                        </option>
+                                    </select>
+                                    <div v-if="selectedItemInfo" style="font-size: 0.75rem; color: var(--text-cyan); margin-top: 6px; background: rgba(0,240,255,0.06); padding: 6px 8px; border-radius: 4px;">
+                                        {{ selectedItemInfo.description }}
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Total Final -->
-                            <div class="stats-total-row">
-                                <span class="total-label">TOTAL FINAL COMBINADO:</span>
-                                <span class="total-value">{{ finalTotal }} PTS</span>
+                            <!-- Asignador de Stat Points (SP) -->
+                            <div class="rotom-card">
+                                <div class="card-header">
+                                    <h3 class="card-title">📊 STAT POINTS (SP)</h3>
+                                    <span class="card-badge">MÁX 66 SP (CAP 32)</span>
+                                </div>
+
+                                <!-- Barra de consumo de SP -->
+                                <div class="sp-pool-tracker">
+                                    <div class="sp-tracker-header">
+                                        <span>USADOS: <strong style="color: var(--rotom-orange);">{{ spUsed }} / 66</strong></span>
+                                        <span>RESTANTES: <strong style="color: var(--rotom-cyan);">{{ spRemaining }}</strong></span>
+                                    </div>
+                                    <div class="sp-bar-track">
+                                        <div class="sp-bar-fill" :style="{ width: ((spUsed / 66) * 100) + '%' }"></div>
+                                    </div>
+                                    
+                                    <!-- Presets rápidos -->
+                                    <div class="sp-presets-container">
+                                        <button class="preset-btn" @click="applyPreset('sweeper_phys')">⚡ Sweeper Físico</button>
+                                        <button class="preset-btn" @click="applyPreset('sweeper_spec')">🔮 Sweeper Especial</button>
+                                        <button class="preset-btn" @click="applyPreset('tank_phys')">🛡 Tanque Físico</button>
+                                        <button class="preset-btn" @click="applyPreset('tank_spec')">✨ Tanque Especial</button>
+                                        <button class="preset-btn reset" @click="resetSp">↺ Limpiar SP</button>
+                                    </div>
+                                </div>
+
+                                <!-- Filas de estadísticas con Steppers -->
+                                <div class="sp-steppers-list">
+                                    <div v-for="(label, key) in TRANSLATIONS.stats" :key="key" class="sp-stepper-row">
+                                        <span class="stepper-label">{{ label }}</span>
+                                        <span class="stepper-base">{{ baseStats[key] }}</span>
+                                        
+                                        <div class="stepper-controls">
+                                            <button class="stepper-btn" @click="modifySp(key, -1)" :disabled="spPoints[key] <= 0">−</button>
+                                            <span class="sp-current-badge">{{ spPoints[key] }}</span>
+                                            <button class="stepper-btn" @click="modifySp(key, 1)" :disabled="spPoints[key] >= 32 || spRemaining <= 0">+</button>
+                                            <button class="stepper-max-btn" @click="setStatSp(key, 32)" :disabled="spPoints[key] >= 32 || spRemaining <= 0">MAX</button>
+                                        </div>
+
+                                        <span class="stepper-final-stat">{{ finalStats[key] }}</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- SELECTOR DE 4 MOVIMIENTOS -->
-                    <div class="calc-card-container">
-                        <div class="calc-card-header">
-                            <h3 class="calc-title">
-                                <span>⚔ MOVIMIENTOS EN CHAMPIONS (4 SLOTS)</span>
-                            </h3>
-                            <span class="calc-badge" style="background: rgba(48, 128, 232, 0.15); color: #60a5fa;">
-                                LEARNSET VERIFICADO
-                            </span>
-                        </div>
+                        <!-- Columna Derecha: 4 Slots de Movimientos de Combate -->
+                        <div>
+                            <div class="rotom-card">
+                                <div class="card-header">
+                                    <h3 class="card-title">⚔️ 4 SLOTS DE MOVIMIENTOS</h3>
+                                    <span class="card-badge">CHAMPIONS MOVES</span>
+                                </div>
 
-                        <div class="move-slots-grid">
-                            <div v-for="(move, index) in selectedMoves" :key="index" class="move-slot-card">
-                                <label class="move-slot-label">SLOT {{ index + 1 }}:</label>
-                                <select 
-                                    class="move-selector-dropdown" 
-                                    v-model="selectedMoves[index]"
-                                    @change="playSound('click')"
-                                >
-                                    <option value="">-- Seleccionar Movimiento --</option>
-                                    <option 
-                                        v-for="m in availableMoves" 
-                                        :key="m.name" 
-                                        :value="m.name"
-                                        :disabled="isMoveDisabledInSlot(m.name, index)"
-                                    >
-                                        {{ m.name }} ({{ TRANSLATIONS.types[m.type] || m.type }})
-                                    </option>
-                                </select>
-
-                                <!-- Detalles del Movimiento Seleccionado -->
-                                <div v-if="moveDetails[index]" class="move-card-details">
-                                    <div class="move-tags-row">
-                                        <span 
-                                            class="mini-type-pill" 
-                                            :style="{ backgroundColor: TYPE_COLORS[moveDetails[index].type] || '#777' }"
+                                <div class="moves-selection-grid">
+                                    <div v-for="(move, index) in selectedMoves" :key="index" class="move-slot-item">
+                                        <label style="font-family: var(--font-heading); font-size: 0.8rem; color: var(--rotom-cyan); margin-bottom: 4px; display: block;">
+                                            SLOT {{ index + 1 }}:
+                                        </label>
+                                        <select 
+                                            class="rotom-select" 
+                                            v-model="selectedMoves[index]"
+                                            @change="playSound('click')"
                                         >
-                                            {{ TRANSLATIONS.types[moveDetails[index].type] || moveDetails[index].type }}
-                                        </span>
-                                        <span class="category-pill">
-                                            {{ TRANSLATIONS.categories[moveDetails[index].category] || moveDetails[index].category }}
-                                        </span>
-                                    </div>
+                                            <option value="">-- Seleccionar Movimiento --</option>
+                                            <option 
+                                                v-for="m in availableMoves" 
+                                                :key="m.name" 
+                                                :value="m.name"
+                                                :disabled="isMoveDisabledInSlot(m.name, index)"
+                                            >
+                                                {{ m.name }} ({{ TRANSLATIONS.types[m.type] || m.type }})
+                                            </option>
+                                        </select>
 
-                                    <div class="move-stats-grid">
-                                        <div class="move-stat-item">
-                                            <strong>{{ moveDetails[index].power || '—' }}</strong>
-                                            <span>PODER</span>
+                                        <!-- Detalles del Movimiento -->
+                                        <div v-if="moveDetails[index]" style="margin-top: 8px;">
+                                            <div style="display: flex; gap: 6px; margin-bottom: 6px;">
+                                                <span class="type-pill" :style="{ backgroundColor: TYPE_COLORS[moveDetails[index].type] || '#777', fontSize: '0.7rem', padding: '2px 8px' }">
+                                                    {{ TRANSLATIONS.types[moveDetails[index].type] || moveDetails[index].type }}
+                                                </span>
+                                                <span style="font-family: var(--font-mono); font-size: 0.72rem; background: rgba(255,255,255,0.08); padding: 2px 6px; border-radius: 4px;">
+                                                    {{ TRANSLATIONS.categories[moveDetails[index].category] || moveDetails[index].category }}
+                                                </span>
+                                            </div>
+                                            <div class="move-specs-row">
+                                                <span>POD: <strong>{{ moveDetails[index].power || '—' }}</strong></span>
+                                                <span>ACC: <strong>{{ moveDetails[index].accuracy ? moveDetails[index].accuracy + '%' : '—' }}</strong></span>
+                                                <span>PP: <strong>{{ moveDetails[index].pp }}</strong></span>
+                                                <span>PRIO: <strong>{{ moveDetails[index].priority > 0 ? '+' + moveDetails[index].priority : moveDetails[index].priority }}</strong></span>
+                                            </div>
                                         </div>
-                                        <div class="move-stat-item">
-                                            <strong>{{ moveDetails[index].accuracy ? moveDetails[index].accuracy + '%' : '—' }}</strong>
-                                            <span>PRECISIÓN</span>
-                                        </div>
-                                        <div class="move-stat-item">
-                                            <strong>{{ moveDetails[index].pp || '—' }}</strong>
-                                            <span>PP</span>
-                                        </div>
-                                        <div class="move-stat-item">
-                                            <strong>{{ moveDetails[index].priority > 0 ? '+' + moveDetails[index].priority : moveDetails[index].priority }}</strong>
-                                            <span>PRIORIDAD</span>
-                                        </div>
-                                    </div>
-
-                                    <p class="move-description-text">{{ moveDetails[index].description }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- MATRIZ DEFENSIVA DE TIPOS -->
-                    <div class="calc-card-container">
-                        <div class="calc-card-header">
-                            <h3 class="calc-title">
-                                <span>🛡 EFECTIVIDAD DEFENSIVA DE TIPOS</span>
-                            </h3>
-                        </div>
-
-                        <div class="type-matrix-content">
-                            <!-- Super Débil (x4) -->
-                            <div class="matrix-group" v-if="typeEffectiveness.superWeak.length > 0">
-                                <div class="matrix-group-title" style="color: #ff3344;">
-                                    <span>⚠️ SUPER DÉBIL (×4)</span>
-                                </div>
-                                <div class="matrix-pill-grid">
-                                    <div 
-                                        v-for="item in typeEffectiveness.superWeak" 
-                                        :key="item.type" 
-                                        class="matrix-item-pill" 
-                                        :style="{ backgroundColor: item.color }"
-                                    >
-                                        <span>{{ item.nameEs }}</span>
-                                        <strong class="matrix-mult-badge">×4</strong>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Débil (x2) -->
-                            <div class="matrix-group" v-if="typeEffectiveness.weak.length > 0">
-                                <div class="matrix-group-title" style="color: #fb923c;">
-                                    <span>🔻 DÉBIL (×2)</span>
-                                </div>
-                                <div class="matrix-pill-grid">
-                                    <div 
-                                        v-for="item in typeEffectiveness.weak" 
-                                        :key="item.type" 
-                                        class="matrix-item-pill" 
-                                        :style="{ backgroundColor: item.color }"
-                                    >
-                                        <span>{{ item.nameEs }}</span>
-                                        <strong class="matrix-mult-badge">×2</strong>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Resistente (x0.5) -->
-                            <div class="matrix-group" v-if="typeEffectiveness.resistant.length > 0">
-                                <div class="matrix-group-title" style="color: #4ade80;">
-                                    <span>🛡 RESISTENTE (×0.5)</span>
-                                </div>
-                                <div class="matrix-pill-grid">
-                                    <div 
-                                        v-for="item in typeEffectiveness.resistant" 
-                                        :key="item.type" 
-                                        class="matrix-item-pill" 
-                                        :style="{ backgroundColor: item.color }"
-                                    >
-                                        <span>{{ item.nameEs }}</span>
-                                        <strong class="matrix-mult-badge">×0.5</strong>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Super Resistente (x0.25) -->
-                            <div class="matrix-group" v-if="typeEffectiveness.superResistant.length > 0">
-                                <div class="matrix-group-title" style="color: #22c55e;">
-                                    <span>🔰 SUPER RESISTENTE (×0.25)</span>
-                                </div>
-                                <div class="matrix-pill-grid">
-                                    <div 
-                                        v-for="item in typeEffectiveness.superResistant" 
-                                        :key="item.type" 
-                                        class="matrix-item-pill" 
-                                        :style="{ backgroundColor: item.color }"
-                                    >
-                                        <span>{{ item.nameEs }}</span>
-                                        <strong class="matrix-mult-badge">×0.25</strong>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Inmune (x0) -->
-                            <div class="matrix-group" v-if="typeEffectiveness.immune.length > 0">
-                                <div class="matrix-group-title" style="color: #a78bfa;">
-                                    <span>✨ INMUNE (×0)</span>
-                                </div>
-                                <div class="matrix-pill-grid">
-                                    <div 
-                                        v-for="item in typeEffectiveness.immune" 
-                                        :key="item.type" 
-                                        class="matrix-item-pill" 
-                                        :style="{ backgroundColor: item.color }"
-                                    >
-                                        <span>{{ item.nameEs }}</span>
-                                        <strong class="matrix-mult-badge">×0</strong>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Daño Normal (x1) -->
-                            <div class="matrix-group">
-                                <div class="matrix-group-title" style="color: var(--screen-text-dim);">
-                                    <span>◈ DAÑO NORMAL (×1)</span>
-                                </div>
-                                <div class="matrix-pill-grid">
-                                    <div 
-                                        v-for="item in typeEffectiveness.normal" 
-                                        :key="item.type" 
-                                        class="matrix-item-pill" 
-                                        :style="{ backgroundColor: item.color }"
-                                    >
-                                        <span>{{ item.nameEs }}</span>
-                                        <strong class="matrix-mult-badge">×1</strong>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </section>
+
+                <!-- ========================================================
+                     PESTAÑA 3: ANALIZADOR DEFENSIVO DE EQUIPO (6 POKÉMON)
+                     ======================================================== -->
+                <section v-if="activeTab === 'team'" class="tab-content-container">
+                    
+                    <!-- Barra de Acciones Rápidas de Equipo -->
+                    <div class="team-action-bar">
+                        <div style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: var(--rotom-cyan);">
+                            ⚡ COBERTURA DEFENSIVA DEL EQUIPO ({{ filledTeamCount }} / 6)
+                        </div>
+                        <div class="team-quick-btns">
+                            <button class="team-action-btn primary" @click="fillSampleTeam">
+                                🎲 Equipo Recomendado
+                            </button>
+                            <button class="team-action-btn" @click="clearTeam">
+                                ↺ Vaciar Equipo
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 6 Ranuras de Pokémon del Equipo -->
+                    <div class="team-slots-grid">
+                        <div v-for="(slot, index) in teamSlots" :key="slot.id" class="team-slot-card">
+                            <span class="slot-number-tag">SLOT {{ slot.id }}</span>
+                            <button class="slot-clear-btn" @click="clearSlot(index)" title="Limpiar este slot">✕</button>
+
+                            <!-- Imagen de Showdown / Avatar -->
+                            <img 
+                                v-if="slot.dexNumber" 
+                                :src="`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/showdown/${slot.dexNumber}.gif`" 
+                                :alt="slot.pokemonName" 
+                                class="slot-sprite-img"
+                            >
+                            <div v-else class="slot-empty-avatar">➕</div>
+
+                            <!-- Selector de Pokémon para este slot -->
+                            <select 
+                                class="slot-type-select" 
+                                style="margin-bottom: 6px; font-weight: bold;"
+                                :value="slot.pokemonName"
+                                @change="e => {
+                                    const found = roster.find(p => p.name === e.target.value);
+                                    setTeamSlotFromPokemon(index, found);
+                                }"
+                            >
+                                <option value="">-- Elegir Pokémon --</option>
+                                <option v-for="p in roster" :key="p.name + p.form" :value="p.name">
+                                    #{{ String(p.dexNumber).padStart(3, '0') }} {{ p.name }}
+                                </option>
+                            </select>
+
+                            <!-- Selectores manuales de Tipos (Tipo 1 y Tipo 2) -->
+                            <div class="slot-type-selectors">
+                                <select v-model="slot.types[0]" class="slot-type-select" @change="playSound('click')">
+                                    <option value="">Tipo 1 (Ninguno)</option>
+                                    <option v-for="t in typesList" :key="t" :value="t">{{ TRANSLATIONS.types[t] || t }}</option>
+                                </select>
+                                <select v-model="slot.types[1]" class="slot-type-select" @change="playSound('click')">
+                                    <option value="">Tipo 2 (Ninguno)</option>
+                                    <option v-for="t in typesList" :key="t" :value="t">{{ TRANSLATIONS.types[t] || t }}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Diagnóstico Inteligente de Rotom AI -->
+                    <div class="rotom-ai-box">
+                        <div class="rotom-ai-avatar">🤖</div>
+                        <div class="rotom-ai-body">
+                            <div class="ai-header-row">
+                                <div style="font-family: var(--font-heading); font-weight: 700; color: #FFF; font-size: 1rem;">
+                                    DIAGNÓSTICO ROTOM AI
+                                </div>
+                                <div class="ai-grade-badge">RANGO DEFENSIVO: {{ teamDiagnostics.grade }}</div>
+                            </div>
+                            <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 8px;">
+                                {{ teamDiagnostics.summary }}
+                            </p>
+
+                            <!-- Alertas dinámicas -->
+                            <div v-for="(alert, i) in teamDiagnostics.alerts" :key="i" class="ai-alert-pill" :class="alert.type">
+                                <strong>{{ alert.icon }} {{ alert.title }}</strong>: {{ alert.desc }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Matriz de 18 Tipos Elementales Atacantes -->
+                    <div class="rotom-card">
+                        <div class="card-header">
+                            <h3 class="card-title">🌐 MATRIZ DE DEFENSA CONTRA LOS 18 TIPOS</h3>
+                            <span class="card-badge">ANÁLISIS GLOBAL</span>
+                        </div>
+
+                        <div class="matrix-grid-18">
+                            <div 
+                                v-for="m in teamEffectivenessMatrix" 
+                                :key="m.type" 
+                                class="matrix-type-card"
+                                :class="{
+                                    'danger-card': m.status === 'critical_danger' || m.status === 'danger',
+                                    'fortress-card': m.status === 'fortress'
+                                }"
+                            >
+                                <div class="type-card-header">
+                                    <span class="type-badge-mini" :style="{ backgroundColor: m.color }">
+                                        {{ m.nameEs }}
+                                    </span>
+                                    <span 
+                                        class="type-score-tag"
+                                        :class="{
+                                            'positive': m.netBalance > 0,
+                                            'negative': m.netBalance < 0,
+                                            'neutral': m.netBalance === 0
+                                        }"
+                                    >
+                                        Balance: {{ m.netBalance > 0 ? '+' + m.netBalance : m.netBalance }}
+                                    </span>
+                                </div>
+
+                                <div class="type-card-counters">
+                                    <div class="counter-item weak">
+                                        <strong>{{ m.totalWeak }}</strong>
+                                        <span>DÉBILES</span>
+                                    </div>
+                                    <div class="counter-item resist">
+                                        <strong>{{ m.totalResist }}</strong>
+                                        <span>RESIST.</span>
+                                    </div>
+                                    <div class="counter-item immune">
+                                        <strong>{{ m.immuneCount }}</strong>
+                                        <span>INMUNES</span>
+                                    </div>
+                                    <div class="counter-item neutral">
+                                        <strong>{{ m.neutralCount }}</strong>
+                                        <span>NEUTROS</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+
             </div>
+
         </main>
     </div>
 
-    <!-- Script de la aplicación Vue 3 -->
+    <!-- Script de la aplicación -->
     <script src="script.js"></script>
 </body>
-
 </html>
