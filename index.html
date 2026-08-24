@@ -432,6 +432,9 @@
                                                 <span>PP: <strong>{{ moveDetails[index].pp }}</strong></span>
                                                 <span>PRIO: <strong>{{ moveDetails[index].priority > 0 ? '+' + moveDetails[index].priority : moveDetails[index].priority }}</strong></span>
                                             </div>
+                                            <div v-if="moveDetails[index].description" style="font-size: 0.72rem; color: var(--text-secondary); margin-top: 6px; line-height: 1.35; border-top: 1px solid var(--surface-border); padding-top: 5px;">
+                                                {{ moveDetails[index].description }}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

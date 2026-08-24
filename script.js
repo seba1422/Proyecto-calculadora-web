@@ -243,16 +243,38 @@ createApp({
             return tr?.display || name;
         };
 
+        const getMoveDescription = (name) => {
+            if (!name) return "";
+            const tr = translationsMap.value.moves?.[name];
+            return tr?.description || "";
+        };
+
         const getAbilityDisplayName = (name) => {
             if (!name) return "";
             const tr = translationsMap.value.abilities?.[name];
             return tr?.display || name;
         };
 
+        const getAbilityDescription = (name) => {
+            if (!name) return "";
+            const tr = translationsMap.value.abilities?.[name];
+            if (tr && tr.description) return tr.description;
+            const item = abilitiesMap.value.get(name);
+            return item?.description || "Habilidad oficial de Pokémon.";
+        };
+
         const getItemDisplayName = (name) => {
             if (!name) return "";
             const tr = translationsMap.value.items?.[name];
             return tr?.display || name;
+        };
+
+        const getItemDescription = (name) => {
+            if (!name) return "";
+            const tr = translationsMap.value.items?.[name];
+            if (tr && tr.description) return tr.description;
+            const item = items.value.find(i => i.name === name);
+            return item?.description || "Objeto oficial de combate.";
         };
 
         // Helper para crear key única de Pokémon
@@ -331,7 +353,7 @@ createApp({
             return f.hp + f.atk + f.def + f.spa + f.spd + f.spe;
         });
 
-        // Habilidades verificadas del Pokémon seleccionado con nombres ES / LATAM
+        // Habilidades verificadas del Pokémon seleccionado con nombres y descripciones ES / LATAM
         const verifiedAbilities = computed(() => {
             if (!selectedPokemon.value || !selectedPokemon.value.abilities) return [];
             const names = Object.values(selectedPokemon.value.abilities);
@@ -339,25 +361,27 @@ createApp({
             for (const name of names) {
                 const item = abilitiesMap.value.get(name);
                 const displayName = getAbilityDisplayName(name);
+                const description = getAbilityDescription(name);
                 if (item && item.championsVerified === true) {
-                    list.push({ ...item, displayName, originalName: name });
+                    list.push({ ...item, displayName, description, originalName: name });
                 } else if (item) {
-                    list.push({ ...item, displayName, originalName: name, unverified: true });
+                    list.push({ ...item, displayName, description, originalName: name, unverified: true });
                 } else {
-                    list.push({ name, displayName, description: "Habilidad oficial de Pokémon." });
+                    list.push({ name, displayName, description });
                 }
             }
             return list;
         });
 
-        // Objeto seleccionado con información
+        // Objeto seleccionado con información en español
         const selectedItemInfo = computed(() => {
             if (!selectedItem.value) return null;
             const it = items.value.find(i => i.name === selectedItem.value);
             if (!it) return null;
             return {
                 ...it,
-                displayName: getItemDisplayName(it.name)
+                displayName: getItemDisplayName(it.name),
+                description: getItemDescription(it.name)
             };
         });
 
@@ -372,7 +396,8 @@ createApp({
                 const moveData = movesMap.value.get(m.name);
                 if (moveData && moveData.inChampions === true) {
                     const displayName = getMoveDisplayName(m.name);
-                    list.push({ ...moveData, displayName, originalName: m.name });
+                    const description = getMoveDescription(m.name);
+                    list.push({ ...moveData, displayName, description, originalName: m.name });
                 }
             }
             return list.sort((a, b) => a.displayName.localeCompare(b.displayName));
@@ -386,7 +411,8 @@ createApp({
                 if (!m) return null;
                 return {
                     ...m,
-                    displayName: getMoveDisplayName(name)
+                    displayName: getMoveDisplayName(name),
+                    description: getMoveDescription(name)
                 };
             });
         });
