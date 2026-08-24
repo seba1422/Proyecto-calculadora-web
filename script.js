@@ -14,7 +14,8 @@ const API_ENDPOINTS = {
     MOVES: "https://raw.githubusercontent.com/otterlyclueless/pokemon-champions-data/refs/heads/main/moves/moves.json",
     ABILITIES: "https://raw.githubusercontent.com/otterlyclueless/pokemon-champions-data/refs/heads/main/abilities/abilities.json",
     ITEMS: "https://raw.githubusercontent.com/otterlyclueless/pokemon-champions-data/refs/heads/main/items/items.json",
-    TYPE_CHART: "https://raw.githubusercontent.com/otterlyclueless/pokemon-champions-data/refs/heads/main/type-chart/effectiveness.json"
+    TYPE_CHART: "https://raw.githubusercontent.com/otterlyclueless/pokemon-champions-data/refs/heads/main/type-chart/effectiveness.json",
+    TRANSLATIONS: "./translations.json"
 };
 
 // Generaciones Pokémon
@@ -31,7 +32,7 @@ const GENERATIONS = [
     { id: "9", name: "Gen 9 (Paldea)", min: 906, max: 1025 }
 ];
 
-// Traducciones en Español
+// Traducciones fijas en Español
 const TRANSLATIONS = {
     types: {
         Normal: "Normal",
@@ -139,9 +140,9 @@ class RotomAudio {
                 osc.stop(now + 0.04);
             } else if (type === "tab") {
                 osc.type = "triangle";
-                osc.frequency.setValueAtTime(523.25, now); // C5
-                osc.frequency.setValueAtTime(659.25, now + 0.04); // E5
-                osc.frequency.setValueAtTime(783.99, now + 0.08); // G5
+                osc.frequency.setValueAtTime(523.25, now);
+                osc.frequency.setValueAtTime(659.25, now + 0.04);
+                osc.frequency.setValueAtTime(783.99, now + 0.08);
                 gain.gain.setValueAtTime(0.08, now);
                 gain.gain.linearRampToValueAtTime(0, now + 0.14);
                 osc.start(now);
@@ -188,7 +189,7 @@ createApp({
         
         // Pestaña Activa: 'info' (Información), 'calc' (Cálculo SP), 'team' (Equipo 6 Pokémon)
         const activeTab = ref("info");
-        const rotomMood = ref("happy"); // happy, thinking, electric, analyzing
+        const rotomMood = ref("happy");
 
         // Filtros y Búsqueda
         const searchQuery = ref("");
@@ -205,6 +206,7 @@ createApp({
         const items = ref([]);
         const typeChart = ref(null);
         const typesList = ref([]);
+        const translationsMap = ref({ moves: {}, abilities: {}, items: {} });
 
         // Selección Actual en Pestañas 1 & 2
         const selectedPokemon = ref(null);
@@ -233,6 +235,25 @@ createApp({
             { id: 5, pokemonName: "", form: "Base", dexNumber: null, types: ["", ""], custom: false },
             { id: 6, pokemonName: "", form: "Base", dexNumber: null, types: ["", ""], custom: false }
         ]);
+
+        // Helpers de Traducción ES / LATAM
+        const getMoveDisplayName = (name) => {
+            if (!name) return "";
+            const tr = translationsMap.value.moves?.[name];
+            return tr?.display || name;
+        };
+
+        const getAbilityDisplayName = (name) => {
+            if (!name) return "";
+            const tr = translationsMap.value.abilities?.[name];
+            return tr?.display || name;
+        };
+
+        const getItemDisplayName = (name) => {
+            if (!name) return "";
+            const tr = translationsMap.value.items?.[name];
+            return tr?.display || name;
+        };
 
         // Helper para crear key única de Pokémon
         const getPokemonKey = (p) => {
@@ -310,19 +331,20 @@ createApp({
             return f.hp + f.atk + f.def + f.spa + f.spd + f.spe;
         });
 
-        // Habilidades verificadas del Pokémon seleccionado
+        // Habilidades verificadas del Pokémon seleccionado con nombres ES / LATAM
         const verifiedAbilities = computed(() => {
             if (!selectedPokemon.value || !selectedPokemon.value.abilities) return [];
             const names = Object.values(selectedPokemon.value.abilities);
             const list = [];
             for (const name of names) {
                 const item = abilitiesMap.value.get(name);
+                const displayName = getAbilityDisplayName(name);
                 if (item && item.championsVerified === true) {
-                    list.push(item);
+                    list.push({ ...item, displayName, originalName: name });
                 } else if (item) {
-                    list.push({ ...item, unverified: true });
+                    list.push({ ...item, displayName, originalName: name, unverified: true });
                 } else {
-                    list.push({ name, description: "Habilidad oficial sin descripción extendida." });
+                    list.push({ name, displayName, description: "Habilidad oficial de Pokémon." });
                 }
             }
             return list;
@@ -331,10 +353,15 @@ createApp({
         // Objeto seleccionado con información
         const selectedItemInfo = computed(() => {
             if (!selectedItem.value) return null;
-            return items.value.find(it => it.name === selectedItem.value) || null;
+            const it = items.value.find(i => i.name === selectedItem.value);
+            if (!it) return null;
+            return {
+                ...it,
+                displayName: getItemDisplayName(it.name)
+            };
         });
 
-        // Movimientos disponibles en Champions
+        // Movimientos disponibles en Champions con nombres ES / LATAM
         const availableMoves = computed(() => {
             if (!selectedPokemon.value) return [];
             const learnset = learnsets.value[selectedPokemon.value.name];
@@ -344,17 +371,23 @@ createApp({
             for (const m of learnset.moves) {
                 const moveData = movesMap.value.get(m.name);
                 if (moveData && moveData.inChampions === true) {
-                    list.push(moveData);
+                    const displayName = getMoveDisplayName(m.name);
+                    list.push({ ...moveData, displayName, originalName: m.name });
                 }
             }
-            return list.sort((a, b) => a.name.localeCompare(b.name));
+            return list.sort((a, b) => a.displayName.localeCompare(b.displayName));
         });
 
         // Lista de los 4 movimientos seleccionados
         const moveDetails = computed(() => {
             return selectedMoves.value.map(name => {
                 if (!name) return null;
-                return movesMap.value.get(name) || null;
+                const m = movesMap.value.get(name);
+                if (!m) return null;
+                return {
+                    ...m,
+                    displayName: getMoveDisplayName(name)
+                };
             });
         });
 
@@ -449,16 +482,15 @@ createApp({
 
                 const totalWeak = weakCount + superWeakCount;
                 const totalResist = resistantCount + superResistantCount + immuneCount;
-                // Balance neto del equipo: positivo es defensivamente sólido, negativo es vulnerable
                 const netBalance = totalResist - totalWeak;
 
                 let status = "balanced";
                 if (totalWeak >= 3 && immuneCount === 0 && totalResist <= 1) {
-                    status = "critical_danger"; // Muy vulnerable
+                    status = "critical_danger";
                 } else if (totalWeak >= 2 && totalResist === 0) {
                     status = "danger";
                 } else if (totalResist >= 3 || immuneCount >= 2) {
-                    status = "fortress"; // Muy protegido
+                    status = "fortress";
                 } else if (totalResist > totalWeak) {
                     status = "safe";
                 }
@@ -530,7 +562,6 @@ createApp({
                 });
             }
 
-            // Calificación Rotom
             let totalDanger = criticalWeakTypes.length * 2 + zeroCoverageWeak.length;
             let totalStrengths = strongResistTypes.length;
             let grade = "A";
@@ -643,7 +674,6 @@ createApp({
             if (playSoundEffect) playSound("beep");
         };
 
-        // Presets comunes de SP para Champions
         const applyPreset = (presetName) => {
             resetSp(false);
             if (presetName === "sweeper_phys") {
@@ -692,9 +722,6 @@ createApp({
             return Math.min(100, Math.max(5, (finalVal / maxVal) * 100));
         };
 
-        // ========================================================
-        // MÉTODOS DEL CONSTRUCTOR DE EQUIPO (PESTAÑA 3)
-        // ========================================================
         const setTeamSlotFromPokemon = (slotIndex, poke) => {
             if (!poke) {
                 teamSlots.value[slotIndex] = {
@@ -720,7 +747,6 @@ createApp({
 
         const addCurrentPokemonToTeam = () => {
             if (!selectedPokemon.value) return;
-            // Buscar primer slot vacío
             const emptyIdx = teamSlots.value.findIndex(s => !s.pokemonName && (!s.types[0] && !s.types[1]));
             const targetIdx = emptyIdx !== -1 ? emptyIdx : 0;
             setTeamSlotFromPokemon(targetIdx, selectedPokemon.value);
@@ -746,7 +772,6 @@ createApp({
         };
 
         const fillSampleTeam = () => {
-            // Ejemplo de equipo clásico y balanceado de 6 Pokémon de Champions
             const sampleNames = ["Venusaur", "Charizard", "Blastoise", "Gengar", "Dragonite", "Snorlax"];
             sampleNames.forEach((name, idx) => {
                 const found = roster.value.find(p => p.name === name);
@@ -778,7 +803,8 @@ createApp({
                     movesRes,
                     abilitiesRes,
                     itemsRes,
-                    typeChartRes
+                    typeChartRes,
+                    translationsRes
                 ] = await Promise.all([
                     fetch(API_ENDPOINTS.ROSTER).then(r => r.json()),
                     fetch(API_ENDPOINTS.STATS).then(r => r.json()),
@@ -787,7 +813,8 @@ createApp({
                     fetch(API_ENDPOINTS.MOVES).then(r => r.json()),
                     fetch(API_ENDPOINTS.ABILITIES).then(r => r.json()),
                     fetch(API_ENDPOINTS.ITEMS).then(r => r.json()),
-                    fetch(API_ENDPOINTS.TYPE_CHART).then(r => r.json())
+                    fetch(API_ENDPOINTS.TYPE_CHART).then(r => r.json()),
+                    fetch(API_ENDPOINTS.TRANSLATIONS).then(r => r.json()).catch(() => ({ moves: {}, abilities: {}, items: {} }))
                 ]);
 
                 roster.value = rosterRes;
@@ -817,6 +844,7 @@ createApp({
 
                 typeChart.value = typeChartRes.chart;
                 typesList.value = typeChartRes.types.filter(t => t.trim().toLowerCase() !== "stellar");
+                translationsMap.value = translationsRes;
 
                 // Configurar selección inicial
                 const initialNature = naturesRes.find(n => n.name === "Hardy") || naturesRes[0];
@@ -825,7 +853,6 @@ createApp({
                 if (rosterRes.length > 0) {
                     const defaultPoke = rosterRes.find(p => p.name === "Pikachu") || rosterRes[0];
                     selectPokemon(defaultPoke);
-                    // Inicializar equipo de muestra
                     fillSampleTeam();
                 }
 
@@ -880,6 +907,9 @@ createApp({
             filledTeamCount,
             teamEffectivenessMatrix,
             teamDiagnostics,
+            getMoveDisplayName,
+            getAbilityDisplayName,
+            getItemDisplayName,
             selectPokemon,
             selectNextPokemon,
             selectPrevPokemon,

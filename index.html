@@ -201,7 +201,7 @@
                                 </div>
                                 <div v-for="ab in verifiedAbilities" :key="ab.name" class="ability-pill-card">
                                     <div class="ability-name">
-                                        <span>{{ ab.name }}</span>
+                                        <span>{{ ab.displayName || ab.name }}</span>
                                         <span v-if="ab.championsVerified" style="color: var(--color-success);">✓ Verificada</span>
                                     </div>
                                     <div class="ability-desc">{{ ab.description }}</div>
@@ -329,11 +329,11 @@
                                     <select class="rotom-select" style="width: 100%;" v-model="selectedItem" @change="playSound('click')">
                                         <option value="">-- Sin Objeto Equipado --</option>
                                         <option v-for="it in items" :key="it.name" :value="it.name">
-                                            {{ it.name }}
+                                            {{ getItemDisplayName(it.name) }}
                                         </option>
                                     </select>
                                     <div v-if="selectedItemInfo" style="font-size: 0.75rem; color: var(--text-cyan); margin-top: 6px; background: rgba(0,240,255,0.06); padding: 6px 8px; border-radius: 4px;">
-                                        {{ selectedItemInfo.description }}
+                                        <strong>{{ selectedItemInfo.displayName }}:</strong> {{ selectedItemInfo.description }}
                                     </div>
                                 </div>
                             </div>
@@ -409,12 +409,15 @@
                                                 :value="m.name"
                                                 :disabled="isMoveDisabledInSlot(m.name, index)"
                                             >
-                                                {{ m.name }} ({{ TRANSLATIONS.types[m.type] || m.type }})
+                                                {{ m.displayName || m.name }} ({{ TRANSLATIONS.types[m.type] || m.type }})
                                             </option>
                                         </select>
 
                                         <!-- Detalles del Movimiento -->
                                         <div v-if="moveDetails[index]" style="margin-top: 8px;">
+                                            <div style="font-family: var(--font-heading); font-size: 0.82rem; font-weight: 700; color: var(--text-primary); margin-bottom: 4px;">
+                                                {{ moveDetails[index].displayName || moveDetails[index].name }}
+                                            </div>
                                             <div style="display: flex; gap: 6px; margin-bottom: 6px;">
                                                 <span class="type-pill" :style="{ backgroundColor: TYPE_COLORS[moveDetails[index].type] || '#777', fontSize: '0.7rem', padding: '2px 8px' }">
                                                     {{ TRANSLATIONS.types[moveDetails[index].type] || moveDetails[index].type }}
