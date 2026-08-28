@@ -5406,91 +5406,91 @@
       "es": "Adaptable",
       "latam": "Adaptable",
       "display": "Adaptable",
-      "description": "Los movimientos de este Pokémon que coinciden con su tipo tienen una bonificación por mismo tipo (STAB) de 2x en lugar de 1.5x."
+      "description": "Los movimientos de este Pokémon que coinciden con su tipo tienen una bonificación STAB de 2 en lugar de 1.5."
     },
     "Aerilate": {
       "es": "Piel Celeste",
       "latam": "Piel Celeste",
       "display": "Piel Celeste",
-      "description": "Los movimientos de tipo Normal de este Pokémon se convierten en tipo Volador y su potencia se multiplica por 1.2x."
+      "description": "De este Pokémon Normal-type moves become Flying-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects."
     },
     "Aftermath": {
       "es": "Detonación",
       "latam": "Secuela",
       "display": "Detonación / Secuela",
-      "description": "Si este Pokémon se debilita por un movimiento de contacto, el atacante pierde 1/4 de sus PS máximos (redondeado hacia abajo)."
+      "description": "If este Pokémon es debilitado with a movimiento de contacto, that move's user loses 1/4 of its maximum PS, redondeado hacia abajo. This effect is prevented if the move's user has the Magic Guard Ability or if any active Pokemon has the Damp Ability."
     },
     "Analytic": {
       "es": "Cálculo Final",
       "latam": "Cálculo Final",
       "display": "Cálculo Final",
-      "description": "La potencia de los movimientos de este Pokémon se multiplica por 1.3x si es el último en actuar en el turno."
+      "description": "The power of de este Pokémon move is multiplied by 1.3 if it is the last to move in a turn. Does not affect Doom Desire and Future Sight."
     },
     "Anger Point": {
       "es": "Irascible",
       "latam": "Irascible",
       "display": "Irascible",
-      "description": "Si este Pokémon recibe un golpe crítico, su Ataque aumenta al máximo (+12 niveles)."
+      "description": "If este Pokémon, but not its substitute, is struck by a golpe crítico, its Ataque is raised by 12 stages."
     },
     "Anticipation": {
       "es": "Anticipación",
       "latam": "Anticipación",
       "display": "Anticipación",
-      "description": "On switch-in, this Pokemon is alerted if any opposing Pokemon has an attacking move with a type that is super effective against this Pokemon, or any OHKO move. This effect considers Hidden Power to be its determined type, and every other move to be its original type."
+      "description": "On switch-in, este Pokémon is alerted if any opposing Pokemon has an attacking move with a type that is super effective against este Pokémon, or any OHKO move. This effect considers Hidden Power to be its determined type, and every other move to be its original type."
     },
     "Armor Tail": {
       "es": "Cola Armadura",
       "latam": "Cola Armadura",
       "display": "Cola Armadura",
-      "description": "Impide que los Pokémon rivales utilicen movimientos con prioridad contra este Pokémon o sus aliados."
+      "description": "Priority moves used by opposing Pokemon targeting este Pokémon or its allies are prevented from having an effect."
     },
     "Aroma Veil": {
       "es": "Velo Aroma",
       "latam": "Velo Aromático",
       "display": "Velo Aroma / Velo Aromático",
-      "description": "This Pokemon and its allies cannot become affected by Attract, Disable, Encore, Heal Block, Taunt, or Torment."
+      "description": "Este Pokémon and its allies cannot become affected by Attract, Disable, Encore, Heal Block, Taunt, or Torment."
     },
     "Battle Bond": {
       "es": "Fuerte Afecto",
       "latam": "Fuerte Afecto",
       "display": "Fuerte Afecto",
-      "description": "If this Pokemon is a Greninja, its Attack, Special Attack, and Speed are raised by 1 stage if it attacks and knocks out another Pokemon. This effect can only happen once per battle."
+      "description": "If este Pokémon is a Greninja, its Ataque, Ataque Especial, and Velocidad are raised by 1 stage if it attacks and knocks out another Pokemon. This effect can only happen once per battle."
     },
     "Berserk": {
       "es": "Cólera",
       "latam": "Ira",
       "display": "Cólera / Ira",
-      "description": "When this Pokemon has more than 1/2 its maximum HP and takes damage from an attack bringing it to 1/2 or less of its maximum HP, its Special Attack is raised by 1 stage. This effect applies after all hits from a multi-hit move. This effect is prevented if the move had a secondary effect removed by the Sheer Force Ability."
+      "description": "When este Pokémon has more than 1/2 its maximum PS and takes damage from an attack bringing it to 1/2 or less of its maximum PS, its Ataque Especial is raised by 1 stage. This effect applies after all hits from a multi-hit move. This effect is prevented if the move had a efecto secundario removed by the Sheer Force Ability."
     },
     "Big Pecks": {
       "es": "Sacapecho",
       "latam": "Sacapecho",
       "display": "Sacapecho",
-      "description": "Prevents other Pokemon from lowering this Pokemon's Defense stat stage."
+      "description": "Prevents other Pokemon from lowering de este Pokémon Defensa stat stage."
     },
     "Blaze": {
       "es": "Mar Llamas",
       "latam": "Mar de Llamas",
       "display": "Mar Llamas / Mar de Llamas",
-      "description": "Cuando los PS de este Pokémon están al 33% o menos, la potencia de sus movimientos de tipo Fuego se multiplica por 1.5x."
+      "description": "When este Pokémon has 1/3 or less of its maximum PS, redondeado hacia abajo, its offensive stat is multiplied by 1.5 while using a Fire-type attack."
     },
     "Bulletproof": {
       "es": "Antibalas",
       "latam": "Antibalas",
       "display": "Antibalas",
-      "description": "Este Pokémon es inmune a movimientos basados en proyectiles, balas y bombas."
+      "description": "Este Pokémon is immune to bullet moves."
     },
     "Cheek Pouch": {
       "es": "Carrillo",
       "latam": "Mejillas",
       "display": "Carrillo / Mejillas",
-      "description": "If this Pokemon eats a held Berry, it restores 1/3 of its maximum HP, rounded down, in addition to the Berry's effect. This effect can also activate after the effects of Bug Bite, Fling, Pluck, Stuff Cheeks, and Teatime if the eaten Berry had an effect on this Pokemon."
+      "description": "If este Pokémon eats a held Berry, it restores 1/3 of its maximum PS, redondeado hacia abajo, in addition to the Berry's effect. This effect can also activate after the effects of Bug Bite, Fling, Pluck, Stuff Cheeks, and Teatime if the eaten Berry had an effect on este Pokémon."
     },
     "Chlorophyll": {
       "es": "Clorofila",
       "latam": "Clorofila",
       "display": "Clorofila",
-      "description": "Si el clima es de sol intenso, la Velocidad de este Pokémon se duplica."
+      "description": "If Sunny Day is active, de este Pokémon Velocidad is doubled. This effect is prevented if este Pokémon is holding a Utility Umbrella."
     },
     "Clear Body": {
       "es": "Cuerpo Puro",
@@ -5502,1039 +5502,1039 @@
       "es": "Aclimatación",
       "latam": "Aclimatación",
       "display": "Aclimatación",
-      "description": "Anula todos los efectos del clima mientras este Pokémon esté en combate."
+      "description": "While este Pokémon is active, the effects of weather conditions are disabled."
     },
     "Competitive": {
       "es": "Tenacidad",
       "latam": "Tenacidad",
       "display": "Tenacidad",
-      "description": "Aumenta el Ataque Especial de este Pokémon en 2 niveles cada vez que un rival reduce alguna de sus características."
+      "description": "De este Pokémon Ataque Especial is raised by 2 stages for each of its stat stages that is lowered by an opposing Pokemon."
     },
     "Compound Eyes": {
       "es": "Ojo Compuesto",
       "latam": "Ojo Compuesto",
       "display": "Ojo Compuesto",
-      "description": "Aumenta la Precisión de los movimientos de este Pokémon en un 30%."
+      "description": "De este Pokémon moves have their accuracy multiplied by 1.3."
     },
     "Contrary": {
       "es": "Respondón",
       "latam": "Respondón",
       "display": "Respondón",
-      "description": "If this Pokemon has a stat stage raised it is lowered instead, and vice versa."
+      "description": "If este Pokémon has a stat stage raised it is lowered instead, and vice versa."
     },
     "Corrosion": {
       "es": "Corrosión",
       "latam": "Corrosión",
       "display": "Corrosión",
-      "description": "This Pokemon can poison or badly poison a Pokemon regardless of its typing."
+      "description": "Este Pokémon can poison or badly poison a Pokemon regardless of its typing."
     },
     "Cud Chew": {
       "es": "Rumia",
       "latam": "Rumia",
       "display": "Rumia",
-      "description": "Si este Pokémon come una baya, la vuelve a comer al final del siguiente turno para repetir su efecto."
+      "description": "If este Pokémon eats a Berry, it will eat that Berry again at the end of the next turn."
     },
     "Curious Medicine": {
       "es": "Medicina Extraña",
       "latam": "Medicina Extraña",
       "display": "Medicina Extraña",
-      "description": "On switch-in, this Pokemon's allies have their stat stages reset to 0."
+      "description": "On switch-in, de este Pokémon allies have their stat stages reset to 0."
     },
     "Cursed Body": {
       "es": "Cuerpo Maldito",
       "latam": "Cuerpo Maldito",
       "display": "Cuerpo Maldito",
-      "description": "If this Pokemon is hit by an attack, there is a 30% chance that move gets disabled unless one of the attacker's moves is already disabled."
+      "description": "If este Pokémon is hit by an attack, there is a 30% chance that move gets disabled unless one of the attacker's moves is already disabled."
     },
     "Cute Charm": {
       "es": "Gran Encanto",
       "latam": "Gran Encanto",
       "display": "Gran Encanto",
-      "description": "There is a 30% chance a Pokemon making contact with this Pokemon will become infatuated if it is of the opposite gender."
+      "description": "There is a 30% chance a Pokemon making contact with este Pokémon will become infatuated if it is of the opposite gender."
     },
     "Damp": {
       "es": "Humedad",
       "latam": "Humedad",
       "display": "Humedad",
-      "description": "While this Pokemon is active, Explosion, Mind Blown, Misty Explosion, Self-Destruct, and the Aftermath Ability are prevented from having an effect."
+      "description": "While este Pokémon is active, Explosion, Mind Blown, Misty Explosion, Self-Destruct, and the Aftermath Ability are prevented from having an effect."
     },
     "Defiant": {
       "es": "Competitivo",
       "latam": "Competitivo",
       "display": "Competitivo",
-      "description": "Aumenta el Ataque de este Pokémon en 2 niveles cada vez que un rival reduce alguna de sus características."
+      "description": "De este Pokémon Ataque is raised by 2 stages for each of its stat stages that is lowered by an opposing Pokemon."
     },
     "Disguise": {
       "es": "Disfraz",
       "latam": "Disfraz",
       "display": "Disfraz",
-      "description": "Evita el daño del primer ataque directo que recibe en combate, cambiando a su forma Descubierta y perdiendo 1/8 de sus PS máximos."
+      "description": "If este Pokémon is a Mimikyu, the first hit it takes in battle deals 0 neutral damage. Its disguise is then broken, it changes to Busted Form, and it loses 1/8 of its max PS. Confusion damage also breaks the disguise."
     },
     "Dragonize": {
       "es": "Piel Dragontina",
       "latam": "Piel Dracónica",
       "display": "Piel Dragontina / Piel Dracónica",
-      "description": "This Pokemon's Normal-type moves become Dragon-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects."
+      "description": "De este Pokémon Normal-type moves become Dragon-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects."
     },
     "Drizzle": {
       "es": "Llovizna",
       "latam": "Llovizna",
       "display": "Llovizna",
-      "description": "Invoca lluvia en el campo de batalla al entrar en combate."
+      "description": "On switch-in, este Pokémon summons Rain Dance."
     },
     "Drought": {
       "es": "Sequía",
       "latam": "Sequía",
       "display": "Sequía",
-      "description": "Invoca sol intenso en el campo de batalla al entrar en combate."
+      "description": "On switch-in, este Pokémon summons Sunny Day."
     },
     "Dry Skin": {
       "es": "Piel Seca",
       "latam": "Piel Seca",
       "display": "Piel Seca",
-      "description": "Recupera 1/4 de PS máximos al recibir ataques de tipo Agua y 1/8 de PS por turno bajo lluvia; recibe 1.25x de daño por Fuego y pierde 1/8 de PS bajo sol."
+      "description": "Este Pokémon is immune to Water-type moves and restores 1/4 of its maximum PS, redondeado hacia abajo, when hit by a Water-type move. The power of Fire-type moves is multiplied by 1.25 when used on este Pokémon. At the end of each turn, este Pokémon restores 1/8 of its maximum PS, redondeado hacia abajo, if the weather is Rain Dance, and loses 1/8 of its maximum PS, redondeado hacia abajo, if the weather is Sunny Day. The weather effects are prevented if este Pokémon is holding a Utility Umbrella."
     },
     "Early Bird": {
       "es": "Madrugar",
       "latam": "Madrugador",
       "display": "Madrugar / Madrugador",
-      "description": "This Pokemon's sleep counter drops by 2 instead of 1."
+      "description": "De este Pokémon sleep counter drops by 2 instead of 1."
     },
     "Earth Eater": {
       "es": "Geofagia",
       "latam": "Geofagia",
       "display": "Geofagia",
-      "description": "Otorga inmunidad a los ataques de tipo Tierra y recupera hasta un 25% de los PS máximos al recibir uno."
+      "description": "Este Pokémon is immune to Ground-type moves and restores 1/4 of its maximum PS, redondeado hacia abajo, when hit by a Ground-type move."
     },
     "Electromorphosis": {
       "es": "Dinamo",
       "latam": "Dínamo",
       "display": "Dinamo / Dínamo",
-      "description": "Al recibir daño de un ataque, se carga de energía y duplica la potencia de su siguiente movimiento de tipo Eléctrico."
+      "description": "Este Pokémon gains the Charge effect when it takes a hit from an attack."
     },
     "Fairy Aura": {
       "es": "Aura Feérica",
       "latam": "Aura Feérica",
       "display": "Aura Feérica",
-      "description": "Aumenta la potencia de los movimientos de tipo Hada de todos los Pokémon en combate en un 33%."
+      "description": "While este Pokémon is active, the power of Fairy-type moves used by active Pokemon is multiplied by 1.33."
     },
     "Filter": {
       "es": "Filtro",
       "latam": "Filtro",
       "display": "Filtro",
-      "description": "Reduce en un 25% el daño recibido por ataques súper efectivos."
+      "description": "Este Pokémon receives 3/4 damage from supereffective attacks."
     },
     "Flame Body": {
       "es": "Cuerpo Llama",
       "latam": "Cuerpo de Fuego",
       "display": "Cuerpo Llama / Cuerpo de Fuego",
-      "description": "Tiene un 30% de probabilidad de quemar al atacante al recibir un movimiento de contacto."
+      "description": "30% chance a Pokemon making contact with este Pokémon will be burned."
     },
     "Flash Fire": {
       "es": "Absorbe Fuego",
       "latam": "Absorbefuego",
       "display": "Absorbe Fuego / Absorbefuego",
-      "description": "Otorga inmunidad a los movimientos de tipo Fuego y aumenta la potencia de los propios ataques de Fuego en un 50% al ser golpeado por uno."
+      "description": "Este Pokémon is immune to Fire-type moves. The first time it is hit by a Fire-type move, its offensive stat is multiplied by 1.5 while using a Fire-type attack as long as it remains active and has this Ability. If este Pokémon está congelado, it cannot be defrosted by Fire-type attacks."
     },
     "Flower Veil": {
       "es": "Velo Flor",
       "latam": "Velo Florido",
       "display": "Velo Flor / Velo Florido",
-      "description": "Grass-type Pokemon on this Pokemon's side cannot have their stat stages lowered by other Pokemon or have a non-volatile status condition inflicted on them by other Pokemon."
+      "description": "Grass-type Pokemon on de este Pokémon side cannot have their stat stages lowered by other Pokemon or have a non-volatile problema de estado inflicted on them by other Pokemon."
     },
     "Forecast": {
       "es": "Predicción",
       "latam": "Predicción",
       "display": "Predicción",
-      "description": "If this Pokemon is a Castform, its type changes to the current weather condition's type, except Sandstorm. This effect is prevented if this Pokemon is holding a Utility Umbrella and the weather is Rain Dance or Sunny Day."
+      "description": "If este Pokémon is a Castform, its type changes to the current weather condition's type, except Sandstorm. This effect is prevented if este Pokémon is holding a Utility Umbrella and the weather is Rain Dance or Sunny Day."
     },
     "Friend Guard": {
       "es": "Compiescolta",
       "latam": "Compiescolta",
       "display": "Compiescolta",
-      "description": "Reduce en un 25% el daño directo que reciben los Pokémon aliados en combate."
+      "description": "De este Pokémon allies receive 3/4 damage from other Pokemon's attacks."
     },
     "Frisk": {
       "es": "Cacheo",
       "latam": "Inspección",
       "display": "Cacheo / Inspección",
-      "description": "On switch-in, this Pokemon identifies the held items of all opposing Pokemon."
+      "description": "On switch-in, este Pokémon identifies the held items of all opposing Pokemon."
     },
     "Fur Coat": {
       "es": "Pelaje Recio",
       "latam": "Pelaje Recio",
       "display": "Pelaje Recio",
-      "description": "Duplica la Defensa de este Pokémon."
+      "description": "La Defensa de este Pokémon se duplica."
     },
     "Gale Wings": {
       "es": "Alas Vendaval",
       "latam": "Alas Vendaval",
       "display": "Alas Vendaval",
-      "description": "Otorga +1 de prioridad a los movimientos de tipo Volador cuando los PS de este Pokémon están al 100%."
+      "description": "If este Pokémon is at full PS, its Flying-type moves have their prioridad increased by 1."
     },
     "Gluttony": {
       "es": "Gula",
       "latam": "Gula",
       "display": "Gula",
-      "description": "When this Pokemon is holding a Berry that usually activates with 1/4 or less of its maximum HP, it is eaten at 1/2 or less of its maximum HP instead."
+      "description": "When este Pokémon is holding a Berry that usually activates with 1/4 or less of its maximum PS, it is eaten at 1/2 or less of its maximum PS instead."
     },
     "Gooey": {
       "es": "Baba",
       "latam": "Baba",
       "display": "Baba",
-      "description": "Reduce la Velocidad del atacante en 1 nivel al recibir un movimiento de contacto."
+      "description": "Pokemon making contact with este Pokémon have their Velocidad lowered by 1 stage."
     },
     "Guts": {
       "es": "Agallas",
       "latam": "Agallas",
       "display": "Agallas",
-      "description": "Aumenta el Ataque en un 50% si sufre un problema de estado e ignora la reducción de Ataque por quemadura."
+      "description": "If este Pokémon has a non-volatile problema de estado, its Ataque is multiplied by 1.5. De este Pokémon physical attacks ignore the burn effect of halving damage."
     },
     "Harvest": {
       "es": "Cosecha",
       "latam": "Cosecha",
       "display": "Cosecha",
-      "description": "If the last item this Pokemon used is a Berry, there is a 50% chance it gets restored at the end of each turn. If Sunny Day is active, this chance is 100%."
+      "description": "If the last item este Pokémon used is a Berry, there is a 50% chance it gets restored at the end of each turn. If Sunny Day is active, this chance is 100%."
     },
     "Healer": {
       "es": "Alma Cura",
       "latam": "Alma Sanadora",
       "display": "Alma Cura / Alma Sanadora",
-      "description": "30% chance this Pokemon's ally has its non-volatile status condition cured at the end of each turn."
+      "description": "30% chance de este Pokémon ally has its non-volatile problema de estado cured at the end of each turn."
     },
     "Heatproof": {
       "es": "Ignífugo",
       "latam": "Ignífugo",
       "display": "Ignífugo",
-      "description": "If a Pokemon uses a Fire-type attack against this Pokemon, that Pokemon's offensive stat is halved when calculating the damage to this Pokemon. This Pokemon takes half of the usual burn damage, rounded down."
+      "description": "If a Pokemon uses a Fire-type attack against este Pokémon, that Pokemon's offensive stat is halved when calculating the damage to este Pokémon. Este Pokémon takes half of the usual burn damage, redondeado hacia abajo."
     },
     "Heavy Metal": {
       "es": "Metal Pesado",
       "latam": "Metal Pesado",
       "display": "Metal Pesado",
-      "description": "This Pokemon's weight is doubled. This effect is calculated after the effect of Autotomize, and before the effect of Float Stone."
+      "description": "De este Pokémon weight is doubled. This effect is calculated after the effect of Autotomize, and before the effect of Float Stone."
     },
     "Hospitality": {
       "es": "Hospitalidad",
       "latam": "Hospitalidad",
       "display": "Hospitalidad",
-      "description": "On switch-in, this Pokemon restores 1/4 of its ally's maximum HP, rounded down."
+      "description": "On switch-in, este Pokémon restores 1/4 of its ally's maximum PS, redondeado hacia abajo."
     },
     "Huge Power": {
       "es": "Potencia",
       "latam": "Potencia",
       "display": "Potencia",
-      "description": "Duplica el Ataque físico de este Pokémon."
+      "description": "El Ataque de este Pokémon se duplica."
     },
     "Hunger Switch": {
       "es": "Mutapetito",
       "latam": "Mutapetito",
       "display": "Mutapetito",
-      "description": "If this Pokemon is a Morpeko, it changes formes between its Full Belly Mode and Hangry Mode at the end of each turn."
+      "description": "If este Pokémon is a Morpeko, it changes formes between its Full Belly Mode and Hangry Mode at the end of each turn."
     },
     "Hustle": {
       "es": "Entusiasmo",
       "latam": "Entusiasmo",
       "display": "Entusiasmo",
-      "description": "Aumenta el Ataque físico en un 50%, pero reduce la Precisión de los movimientos físicos en un 20%."
+      "description": "De este Pokémon Ataque is multiplied by 1.5 and the accuracy of its physical attacks is multiplied by 0.8."
     },
     "Hydration": {
       "es": "Hidratación",
       "latam": "Hidratación",
       "display": "Hidratación",
-      "description": "This Pokemon has its non-volatile status condition cured at the end of each turn if Rain Dance is active. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+      "description": "Este Pokémon has its non-volatile problema de estado cured at the end of each turn if Rain Dance is active. This effect is prevented if este Pokémon is holding a Utility Umbrella."
     },
     "Hyper Cutter": {
       "es": "Corte Fuerte",
       "latam": "Corte Fuerte",
       "display": "Corte Fuerte",
-      "description": "Prevents other Pokemon from lowering this Pokemon's Attack stat stage."
+      "description": "Prevents other Pokemon from lowering de este Pokémon Ataque stat stage."
     },
     "Ice Body": {
       "es": "Gélido",
       "latam": "Cuerpo de Hielo",
       "display": "Gélido / Cuerpo de Hielo",
-      "description": "If Snow is active, this Pokemon restores 1/16 of its maximum HP, rounded down, at the end of each turn."
+      "description": "If Snow is active, este Pokémon restores 1/16 of its maximum PS, redondeado hacia abajo, at the end of each turn."
     },
     "Illuminate": {
       "es": "Iluminación",
       "latam": "Iluminación",
       "display": "Iluminación",
-      "description": "Prevents other Pokemon from lowering this Pokemon's accuracy stat stage. This Pokemon ignores a target's evasiveness stat stage."
+      "description": "Prevents other Pokemon from lowering de este Pokémon accuracy stat stage. Este Pokémon ignores a target's evasiveness stat stage."
     },
     "Illusion": {
       "es": "Ilusión",
       "latam": "Ilusión",
       "display": "Ilusión",
-      "description": "When this Pokemon switches in, it appears as the last unfainted Pokemon in its party until it takes direct damage from another Pokemon's attack. This Pokemon's actual level and HP are displayed instead of those of the mimicked Pokemon."
+      "description": "When este Pokémon entra al combate, it appears as the last unfainted Pokemon in its party until it takes direct damage from another Pokemon's attack. De este Pokémon actual level and PS are displayed instead of those of the mimicked Pokemon."
     },
     "Immunity": {
       "es": "Inmunidad",
       "latam": "Inmunidad",
       "display": "Inmunidad",
-      "description": "Este Pokémon es totalmente inmune al envenenamiento y al veneno grave."
+      "description": "Este Pokémon cannot be poisoned. Gaining this Ability while poisoned cures it."
     },
     "Imposter": {
       "es": "Impostor",
       "latam": "Impostor",
       "display": "Impostor",
-      "description": "On switch-in, this Pokemon Transforms into the opposing Pokemon that is facing it. If there is no Pokemon at that position, this Pokemon does not Transform."
+      "description": "On switch-in, este Pokémon Transforms into the opposing Pokemon that is facing it. If there is no Pokemon at that position, este Pokémon does not Transform."
     },
     "Infiltrator": {
       "es": "Allanamiento",
       "latam": "Allanamiento",
       "display": "Allanamiento",
-      "description": "Los movimientos de este Pokémon ignoran Pantalla de Luz, Reflejo, Velo Aurora, Neblina, Velo Sagrado y Sustituto."
+      "description": "De este Pokémon moves ignore substitutes and the opposing side's Reflect, Light Screen, Safeguard, Mist, and Aurora Veil."
     },
     "Innards Out": {
       "es": "Revés",
       "latam": "Revés",
       "display": "Revés",
-      "description": "Si este Pokémon se debilita por un ataque rival, inflige daño al atacante igual a los PS que le restaban."
+      "description": "If este Pokémon es debilitado with a move, that move's user loses PS equal to the amount of damage inflicted on este Pokémon."
     },
     "Inner Focus": {
       "es": "Fuerza Mental",
       "latam": "Fuerza Mental",
       "display": "Fuerza Mental",
-      "description": "Evita que este Pokémon retroceda y es inmune a la habilidad Intimidación."
+      "description": "Este Pokémon cannot be made to retroceder. Este Pokémon is immune to the effect of the Intimidate Ability."
     },
     "Insomnia": {
       "es": "Insomnio",
       "latam": "Insomnio",
       "display": "Insomnio",
-      "description": "Este Pokémon no puede quedarse dormido y es inmune a Bostezo."
+      "description": "Este Pokémon cannot fall asleep. Gaining this Ability while asleep cures it."
     },
     "Intimidate": {
       "es": "Intimidación",
       "latam": "Intimidación",
       "display": "Intimidación",
-      "description": "Al entrar en combate, reduce el Ataque de todos los Pokémon rivales en 1 nivel."
+      "description": "On switch-in, este Pokémon lowers the Ataque of opposing Pokemon by 1 stage. Pokemon with the Inner Focus, Oblivious, Own Tempo, or Scrappy Abilities and Pokemon behind a substitute are immune."
     },
     "Iron Fist": {
       "es": "Puño Férreo",
       "latam": "Puño Férreo",
       "display": "Puño Férreo",
-      "description": "Aumenta en un 20% la potencia de los movimientos basados en puñetazos."
+      "description": "De este Pokémon punch-based attacks have their power multiplied by 1.2."
     },
     "Justified": {
       "es": "Justiciero",
       "latam": "Justiciero",
       "display": "Justiciero",
-      "description": "This Pokemon's Attack is raised by 1 stage after it is damaged by a Dark-type move."
+      "description": "De este Pokémon Ataque is raised by 1 stage after it is damaged by a Dark-type move."
     },
     "Keen Eye": {
       "es": "Vista Lince",
       "latam": "Perspicacia",
       "display": "Vista Lince / Perspicacia",
-      "description": "Prevents other Pokemon from lowering this Pokemon's accuracy stat stage. This Pokemon ignores a target's evasiveness stat stage."
+      "description": "Prevents other Pokemon from lowering de este Pokémon accuracy stat stage. Este Pokémon ignores a target's evasiveness stat stage."
     },
     "Klutz": {
       "es": "Zoquete",
       "latam": "Torpeza",
       "display": "Zoquete / Torpeza",
-      "description": "This Pokemon's held item has no effect. This Pokemon cannot use Fling successfully. Macho Brace, Power Anklet, Power Band, Power Belt, Power Bracer, Power Lens, and Power Weight still have their effects."
+      "description": "De este Pokémon held item has no effect. Este Pokémon cannot use Fling successfully. Macho Brace, Power Anklet, Power Band, Power Belt, Power Bracer, Power Lens, and Power Weight still have their effects."
     },
     "Leaf Guard": {
       "es": "Defensa Hoja",
       "latam": "Defensa Hoja",
       "display": "Defensa Hoja",
-      "description": "If Sunny Day is active, this Pokemon cannot become affected by a non-volatile status condition or Yawn, and Rest will fail for it. This effect is prevented if this Pokemon is holding a Utility Umbrella."
+      "description": "If Sunny Day is active, este Pokémon cannot become affected by a non-volatile problema de estado or Yawn, and Rest will fail for it. This effect is prevented if este Pokémon is holding a Utility Umbrella."
     },
     "Levitate": {
       "es": "Levitación",
       "latam": "Levitación",
       "display": "Levitación",
-      "description": "Este Pokémon es inmune a los ataques de tipo Tierra, Púas, Púas Tóxicas, Red Viscosa y Campo de Terreno."
+      "description": "Este Pokémon is immune to Ground-type attacks and the effects of Spikes, Toxic Spikes, Sticky Web, and the Arena Trap Ability. The effects of Gravity, Ingrain, Smack Down, Thousand Arrows, and Iron Ball nullify the immunity. Thousand Arrows can hit este Pokémon as if it did not have this Ability."
     },
     "Light Metal": {
       "es": "Metal Liviano",
       "latam": "Metal Liviano",
       "display": "Metal Liviano",
-      "description": "This Pokemon's weight is halved, rounded down to a tenth of a kilogram. This effect is calculated after the effect of Autotomize, and before the effect of Float Stone. A Pokemon's weight will not drop below 0.1 kg."
+      "description": "De este Pokémon weight is halved, redondeado hacia abajo to a tenth of a kilogram. This effect is calculated after the effect of Autotomize, and before the effect of Float Stone. A Pokemon's weight will not drop below 0.1 kg."
     },
     "Lightning Rod": {
       "es": "Pararrayos",
       "latam": "Pararrayos",
       "display": "Pararrayos",
-      "description": "Atrae todos los movimientos de tipo Eléctrico, otorgando inmunidad y aumentando el Ataque Especial en 1 nivel."
+      "description": "Este Pokémon is immune to Electric-type moves and raises its Ataque Especial by 1 stage when hit by an Electric-type move. If este Pokémon is not al objetivo of a single-target Electric-type move used by another Pokemon, este Pokémon redirects that move to itself if it is within the range of that move. If multiple Pokemon could redirect with this Ability, it goes to the one with the highest Velocidad, or in the case of a tie to the one that has had this Ability active longer."
     },
     "Limber": {
       "es": "Flexibilidad",
       "latam": "Flexibilidad",
       "display": "Flexibilidad",
-      "description": "Este Pokémon es totalmente inmune a la parálisis."
+      "description": "Este Pokémon cannot be paralyzed. Gaining this Ability while paralyzed cures it."
     },
     "Liquid Voice": {
       "es": "Voz Fluida",
       "latam": "Voz Fluida",
       "display": "Voz Fluida",
-      "description": "This Pokemon's sound-based moves become Water-type moves. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects."
+      "description": "De este Pokémon sound-based moves become Water-type moves. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects."
     },
     "Long Reach": {
       "es": "Remoto",
       "latam": "Remoto",
       "display": "Remoto",
-      "description": "This Pokemon's attacks do not make contact with the target."
+      "description": "De este Pokémon attacks do not make contact with al objetivo."
     },
     "Magic Bounce": {
       "es": "Espejo Mágico",
       "latam": "Espejo Mágico",
       "display": "Espejo Mágico",
-      "description": "Refleja automáticamente hacia el rival la mayoría de movimientos de estado, trampas de entrada y reducción de características."
+      "description": "Este Pokémon is unaffected by certain non-damaging moves directed at it and will instead use such moves against the original user. Moves reflected in this way are unable to be reflected again by this or Magic Coat's effect. Spikes, Stealth Rock, Sticky Web, and Toxic Spikes can only be reflected once per side, by the leftmost Pokemon under this or Magic Coat's effect. The Lightning Rod and Storm Drain Abilities redirect their respective moves before this Ability takes effect."
     },
     "Magic Guard": {
       "es": "Muro Mágico",
       "latam": "Muro Mágico",
       "display": "Muro Mágico",
-      "description": "Este Pokémon solo recibe daño por ataques directos; es inmune al veneno, quemadura, clima, retroceso y trampas."
+      "description": "Este Pokémon can only be damaged by direct attacks. Curse and Substitute on use, Belly Drum, Pain Split, Struggle recoil, and confusion damage are considered direct damage."
     },
     "Magician": {
       "es": "Prestidigitador",
       "latam": "Prestidigitador",
       "display": "Prestidigitador",
-      "description": "If this Pokemon has no item, it steals the item off a Pokemon it hits with an attack. Does not affect Doom Desire and Future Sight. If multiple targets are hit by an attack the item is stolen from the fastest Pokemon, while considering the effect of Trick Room and prioritizing opposing Pokemon before allies."
+      "description": "If este Pokémon has no item, it steals the item off a Pokemon it hits with an attack. Does not affect Doom Desire and Future Sight. If multiple targets are hit by an attack the item is stolen from the fastest Pokemon, while considering the effect of Trick Room and prioritizing opposing Pokemon before allies."
     },
     "Magma Armor": {
       "es": "Escudo Magma",
       "latam": "Escudo de Magma",
       "display": "Escudo Magma / Escudo de Magma",
-      "description": "This Pokemon cannot be frozen. Gaining this Ability while frozen cures it."
+      "description": "Este Pokémon cannot be frozen. Gaining this Ability while frozen cures it."
     },
     "Marvel Scale": {
       "es": "Escama Especial",
       "latam": "Escama Especial",
       "display": "Escama Especial",
-      "description": "Aumenta la Defensa en un 50% si este Pokémon sufre un problema de estado."
+      "description": "If este Pokémon has a non-volatile problema de estado, its Defensa is multiplied by 1.5."
     },
     "Mega Launcher": {
       "es": "Megadisparador",
       "latam": "Megalanzador",
       "display": "Megadisparador / Megalanzador",
-      "description": "Aumenta en un 50% la potencia de los movimientos basados en pulsos y auras."
+      "description": "De este Pokémon pulse moves have their power multiplied by 1.5. Heal Pulse restores 3/4 of a target's maximum PS, redondeado hacia abajo."
     },
     "Mega Sol": {
       "es": "Megasolar",
       "latam": "Megasolar",
       "display": "Megasolar",
-      "description": "This Pokemon's moves are used as if the effects of Sunny Day were active."
+      "description": "De este Pokémon moves are used as if the effects of Sunny Day were active."
     },
     "Merciless": {
       "es": "Ensañamiento",
       "latam": "Ensañamiento",
       "display": "Ensañamiento",
-      "description": "This Pokemon's attacks are critical hits if the target is poisoned."
+      "description": "De este Pokémon attacks are golpes críticos if al objetivo está envenenado."
     },
     "Mimicry": {
       "es": "Mimetismo",
       "latam": "Mimetismo",
       "display": "Mimetismo",
-      "description": "This Pokemon's types change to match the active Terrain when this Pokemon acquires this Ability, or whenever a Terrain begins. Electric type during Electric Terrain, Grass type during Grassy Terrain, Fairy type during Misty Terrain, and Psychic type during Psychic Terrain. If this Ability is acquired without an active Terrain, or a Terrain ends, this Pokemon's types become the original types for its species."
+      "description": "De este Pokémon types change to match the active Terrain when este Pokémon acquires this Ability, or whenever a Terrain begins. Electric type during Electric Terrain, Grass type during Grassy Terrain, Fairy type during Misty Terrain, and Psychic type during Psychic Terrain. If this Ability is acquired without an active Terrain, or a Terrain ends, de este Pokémon types become the original types for its species."
     },
     "Minus": {
       "es": "Menos",
       "latam": "Menos",
       "display": "Menos",
-      "description": "If an active ally has this Ability or the Plus Ability, this Pokemon's Special Attack is multiplied by 1.5."
+      "description": "If an active ally has this Ability or the Plus Ability, de este Pokémon Ataque Especial is multiplied by 1.5."
     },
     "Mirror Armor": {
       "es": "Coraza Reflejo",
       "latam": "Coraza Reflejo",
       "display": "Coraza Reflejo",
-      "description": "When one of this Pokemon's stat stages would be lowered by another Pokemon, that Pokemon's stat stage is lowered instead. This effect does not happen if this Pokemon's stat stage was already -6. If the other Pokemon has a substitute, neither Pokemon has its stat stage lowered."
+      "description": "When one of de este Pokémon stat stages would be lowered by another Pokemon, that Pokemon's stat stage is lowered instead. This effect does not happen if de este Pokémon stat stage was already -6. If the other Pokemon has a substitute, neither Pokemon has its stat stage lowered."
     },
     "Mold Breaker": {
       "es": "Rompemoldes",
       "latam": "Rompemoldes",
       "display": "Rompemoldes",
-      "description": "Los movimientos de este Pokémon ignoran las habilidades defensivas del objetivo."
+      "description": "De este Pokémon moves and their effects ignore certain Abilities of other Pokemon. The Abilities that can be negated are Armor Tail, Aroma Veil, Aura Break, Battle Armor, Big Pecks, Bulletproof, Clear Body, Contrary, Damp, Dazzling, Disguise, Dry Skin, Earth Eater, Filter, Flash Fire, Flower Gift, Flower Veil, Fluffy, Friend Guard, Fur Coat, Good as Gold, Grass Pelt, Guard Dog, Heatproof, Heavy Metal, Hyper Cutter, Ice Face, Ice Scales, Illuminate, Immunity, Inner Focus, Insomnia, Keen Eye, Leaf Guard, Levitate, Light Metal, Lightning Rod, Limber, Magic Bounce, Magma Armor, Marvel Scale, Mind's Eye, Mirror Armor, Motor Drive, Multiscale, Oblivious, Overcoat, Own Tempo, Pastel Veil, Punk Rock, Purifying Salt, Queenly Majesty, Sand Veil, Sap Sipper, Shell Armor, Shield Dust, Simple, Snow Cloak, Solid Rock, Soundproof, Sticky Hold, Storm Drain, Sturdy, Suction Cups, Sweet Veil, Tangled Feet, Telepathy, Tera Shell, Thermal Exchange, Thick Fat, Unaware, Vital Spirit, Volt Absorb, Water Absorb, Water Bubble, Water Veil, Well-Baked Body, White Smoke, Wind Rider, Wonder Guard, and Wonder Skin. This affects every other Pokemon on the field, whether or not it is a target of de este Pokémon move, and whether or not their Ability is beneficial to este Pokémon."
     },
     "Moody": {
       "es": "Veleta",
       "latam": "Temperamental",
       "display": "Veleta / Temperamental",
-      "description": "This Pokemon has a random stat, other than accuracy or evasiveness, raised by 2 stages and another stat lowered by 1 stage at the end of each turn."
+      "description": "Este Pokémon has a random stat, other than accuracy or evasiveness, raised by 2 stages and another stat lowered by 1 stage at the end of each turn."
     },
     "Motor Drive": {
       "es": "Electromotor",
       "latam": "Electromotor",
       "display": "Electromotor",
-      "description": "This Pokemon is immune to Electric-type moves and raises its Speed by 1 stage when hit by an Electric-type move."
+      "description": "Este Pokémon is immune to Electric-type moves and raises its Velocidad by 1 stage when hit by an Electric-type move."
     },
     "Moxie": {
       "es": "Autoestima",
       "latam": "Autoestima",
       "display": "Autoestima",
-      "description": "Aumenta el Ataque en 1 nivel cada vez que este Pokémon debilita directamente a otro Pokémon."
+      "description": "De este Pokémon Ataque is raised by 1 stage if it attacks and knocks out another Pokemon."
     },
     "Multiscale": {
       "es": "Multiescamas",
       "latam": "Multiescamas",
       "display": "Multiescamas",
-      "description": "Reduce a la mitad el daño recibido de ataques directos cuando los PS de este Pokémon están al 100%."
+      "description": "If este Pokémon is at full PS, damage taken from attacks is halved."
     },
     "Mummy": {
       "es": "Momia",
       "latam": "Momia",
       "display": "Momia",
-      "description": "Pokemon making contact with this Pokemon have their Ability changed to Mummy. Does not affect Pokemon with the As One, Battle Bond, Comatose, Disguise, Gulp Missile, Ice Face, Multitype, Mummy, Power Construct, RKS System, Schooling, Shields Down, Stance Change, Tera Shift, Zen Mode, or Zero to Hero Abilities."
+      "description": "Pokemon making contact with este Pokémon have their Ability changed to Mummy. Does not affect Pokemon with the As One, Battle Bond, Comatose, Disguise, Gulp Missile, Ice Face, Multitype, Mummy, Power Construct, RKS System, Schooling, Shields Down, Stance Change, Tera Shift, Zen Mode, or Zero to Hero Abilities."
     },
     "Natural Cure": {
       "es": "Cura Natural",
       "latam": "Curación Natural",
       "display": "Cura Natural / Curación Natural",
-      "description": "Cura todos los problemas de estado de este Pokémon al retirarse del combate."
+      "description": "Este Pokémon has its non-volatile problema de estado cured when it se retira."
     },
     "No Guard": {
       "es": "Indefenso",
       "latam": "Indefenso",
       "display": "Indefenso",
-      "description": "Todos los movimientos usados por o contra este Pokémon tienen un 100% de precisión y nunca fallan."
+      "description": "Every move used by or against este Pokémon will always hit."
     },
     "Oblivious": {
       "es": "Despiste",
       "latam": "Despistado",
       "display": "Despiste / Despistado",
-      "description": "This Pokemon cannot be infatuated or taunted. Gaining this Ability while infatuated or taunted cures it. This Pokemon is immune to the effect of the Intimidate Ability."
+      "description": "Este Pokémon cannot be infatuated or taunted. Gaining this Ability while infatuated or taunted cures it. Este Pokémon is immune to the effect of the Intimidate Ability."
     },
     "Opportunist": {
       "es": "Oportunista",
       "latam": "Oportunista",
       "display": "Oportunista",
-      "description": "Si un rival aumenta sus características, este Pokémon copia inmediatamente los mismos incrementos."
+      "description": "When an opposing Pokemon has a stat stage raised, este Pokémon copies the effect."
     },
     "Overcoat": {
       "es": "Funda",
       "latam": "Funda",
       "display": "Funda",
-      "description": "Inmune al daño por clima (Granizo/Tormenta de Arena) y a movimientos basados en polvos y esporas."
+      "description": "Este Pokémon is immune to powder moves, damage from Sandstorm, and the effects of Rage Powder and the Effect Spore Ability."
     },
     "Overgrow": {
       "es": "Espesura",
       "latam": "Espesura",
       "display": "Espesura",
-      "description": "Cuando los PS están al 33% o menos, la potencia de los movimientos de tipo Planta se multiplica por 1.5x."
+      "description": "When este Pokémon has 1/3 or less of its maximum PS, redondeado hacia abajo, its offensive stat is multiplied by 1.5 while using a Grass-type attack."
     },
     "Own Tempo": {
       "es": "Ritmo Propio",
       "latam": "Ritmo Propio",
       "display": "Ritmo Propio",
-      "description": "This Pokemon cannot be confused. Gaining this Ability while confused cures it. This Pokemon is immune to the effect of the Intimidate Ability."
+      "description": "Este Pokémon cannot be confused. Gaining this Ability while confused cures it. Este Pokémon is immune to the effect of the Intimidate Ability."
     },
     "Parental Bond": {
       "es": "Amor Filial",
       "latam": "Amor Filial",
       "display": "Amor Filial",
-      "description": "Permite que los ataques directos golpeen dos veces por turno; el segundo golpe inflige un 25% del daño."
+      "description": "De este Pokémon damaging moves become multi-hit moves that hit twice. The second hit has its damage quartered. Does not affect Doom Desire, Dragon Darts, Dynamax Cannon, Endeavor, Explosion, Final Gambit, Fling, Future Sight, Ice Ball, Rollout, Self-Destruct, any multi-hit move, any move that has multiple targets, or any two-turn move."
     },
     "Pickpocket": {
       "es": "Hurto",
       "latam": "Hurto",
       "display": "Hurto",
-      "description": "If this Pokemon has no item and is hit by a contact move, it steals the attacker's item. This effect applies after all hits from a multi-hit move. This effect is prevented if the move had a secondary effect removed by the Sheer Force Ability."
+      "description": "If este Pokémon has no item and is hit by a movimiento de contacto, it steals the attacker's item. This effect applies after all hits from a multi-hit move. This effect is prevented if the move had a efecto secundario removed by the Sheer Force Ability."
     },
     "Pickup": {
       "es": "Recogida",
       "latam": "Recolección",
       "display": "Recogida / Recolección",
-      "description": "At the end of each turn, if this Pokemon is not holding an item and at least one adjacent Pokemon used an item during this turn, one of those Pokemon is selected at random and this Pokemon obtains that Pokemon's last used item. An item is not considered the last used if it was a popped Air Balloon, if the item was picked up by another Pokemon with this Ability, or if the item was lost to Bug Bite, Corrosive Gas, Covet, Incinerate, Knock Off, Pluck, or Thief. Items thrown with Fling can be picked up."
+      "description": "At the end of each turn, if este Pokémon is not holding an item and at least one adjacent Pokemon used an item during this turn, one of those Pokemon is selected at random and este Pokémon obtains that Pokemon's last used item. An item is not considered the last used if it was a popped Air Balloon, if the item was picked up by another Pokemon with this Ability, or if the item was lost to Bug Bite, Corrosive Gas, Covet, Incinerate, Knock Off, Pluck, or Thief. Items thrown with Fling can be picked up."
     },
     "Piercing Drill": {
       "es": "Turbotaladro",
       "latam": "Turbotaladro",
       "display": "Turbotaladro",
-      "description": "This Pokemon's contact moves ignore a target's protection and deal 1/4 the usual damage."
+      "description": "De este Pokémon movimientos de contacto ignore a target's protection and deal 1/4 the usual damage."
     },
     "Pixilate": {
       "es": "Piel Feérica",
       "latam": "Piel Feérica",
       "display": "Piel Feérica",
-      "description": "Los movimientos de tipo Normal se convierten en tipo Hada y su potencia se multiplica por 1.2x."
+      "description": "De este Pokémon Normal-type moves become Fairy-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects."
     },
     "Plus": {
       "es": "Más",
       "latam": "Más",
       "display": "Más",
-      "description": "If an active ally has this Ability or the Minus Ability, this Pokemon's Special Attack is multiplied by 1.5."
+      "description": "If an active ally has this Ability or the Minus Ability, de este Pokémon Ataque Especial is multiplied by 1.5."
     },
     "Poison Heal": {
       "es": "Antídoto",
       "latam": "Antídoto",
       "display": "Antídoto",
-      "description": "Restaura 1/8 de los PS máximos al final de cada turno si este Pokémon está envenenado, en lugar de sufrir daño."
+      "description": "If este Pokémon está envenenado, it restores 1/8 of its maximum PS, redondeado hacia abajo, at the end of each turn instead of losing PS."
     },
     "Poison Point": {
       "es": "Punto Tóxico",
       "latam": "Punto Tóxico",
       "display": "Punto Tóxico",
-      "description": "Tiene un 30% de probabilidad de envenenar al atacante al recibir un movimiento de contacto."
+      "description": "30% chance a Pokemon making contact with este Pokémon will be poisoned."
     },
     "Poison Touch": {
       "es": "Toque Tóxico",
       "latam": "Contacto Tóxico",
       "display": "Toque Tóxico / Contacto Tóxico",
-      "description": "Tiene un 30% de probabilidad de envenenar al objetivo al usar un movimiento de contacto."
+      "description": "De este Pokémon movimientos de contacto have a 30% chance of poisoning. This effect comes after a move's inherent efecto secundario chance."
     },
     "Prankster": {
       "es": "Bromista",
       "latam": "Timador",
       "display": "Bromista / Timador",
-      "description": "Otorga +1 de prioridad a los movimientos de categoría Estado, pero fallan contra Pokémon de tipo Siniestro."
+      "description": "De este Pokémon non-damaging moves have their prioridad increased by 1. Opposing Dark-type Pokemon are immune to these moves, and any move called by these moves, if the resulting user of the move has this Ability."
     },
     "Pressure": {
       "es": "Presión",
       "latam": "Presión",
       "display": "Presión",
-      "description": "Obliga a los rivales a gastar 2 PP por cada movimiento dirigido contra este Pokémon."
+      "description": "If este Pokémon is al objetivo of an opposing Pokemon's move, that move loses one additional PP. Imprison, Snatch, and Tera Blast also lose one additional PP when used by an opposing Pokemon, but Sticky Web does not."
     },
     "Protean": {
       "es": "Mutatipo",
       "latam": "Mutatipo",
       "display": "Mutatipo",
-      "description": "Cambia el tipo de este Pokémon al tipo del movimiento que va a usar antes de ejecutarlo (una vez por entrada a combate)."
+      "description": "De este Pokémon type changes to match the type of the move it is about to use. This effect comes after all effects that change a move's type. This effect can only happen once per switch-in, and only if este Pokémon is not Terastallized."
     },
     "Pure Power": {
       "es": "Energía Pura",
       "latam": "Energía Pura",
       "display": "Energía Pura",
-      "description": "Duplica el Ataque físico de este Pokémon."
+      "description": "El Ataque de este Pokémon se duplica."
     },
     "Purifying Salt": {
       "es": "Sal Purificadora",
       "latam": "Sal Purificadora",
       "display": "Sal Purificadora",
-      "description": "Otorga inmunidad a los problemas de estado y reduce a la mitad el daño recibido por movimientos de tipo Fantasma."
+      "description": "Este Pokémon cannot become affected by a non-volatile problema de estado or Yawn. If a Pokemon uses a Ghost-type attack against este Pokémon, that Pokemon's offensive stat is halved when calculating the damage to este Pokémon."
     },
     "Queenly Majesty": {
       "es": "Regia Presencia",
       "latam": "Regia Presencia",
       "display": "Regia Presencia",
-      "description": "Impide que los Pokémon rivales utilicen movimientos con prioridad contra este Pokémon o sus aliados."
+      "description": "Priority moves used by opposing Pokemon targeting este Pokémon or its allies are prevented from having an effect."
     },
     "Quick Draw": {
       "es": "Mano Rápida",
       "latam": "Mano Rápida",
       "display": "Mano Rápida",
-      "description": "This Pokemon has a 30% chance to move first in its priority bracket with attacking moves."
+      "description": "Este Pokémon has a 30% chance to move first in its prioridad bracket with attacking moves."
     },
     "Quick Feet": {
       "es": "Pies Rápidos",
       "latam": "Pies Rápidos",
       "display": "Pies Rápidos",
-      "description": "Aumenta la Velocidad en un 50% si sufre un problema de estado e ignora la reducción por parálisis."
+      "description": "If este Pokémon has a non-volatile problema de estado, its Velocidad is multiplied by 1.5. Este Pokémon ignores the paralysis effect of halving Velocidad."
     },
     "Rain Dish": {
       "es": "Cura Lluvia",
       "latam": "Curación Pluvial",
       "display": "Cura Lluvia / Curación Pluvial",
-      "description": "Recupera 1/16 de los PS máximos al final de cada turno si está lloviendo."
+      "description": "If Rain Dance is active, este Pokémon restores 1/16 of its maximum PS, redondeado hacia abajo, at the end of each turn. This effect is prevented if este Pokémon is holding a Utility Umbrella."
     },
     "Receiver": {
       "es": "Receptor",
       "latam": "Receptor",
       "display": "Receptor",
-      "description": "This Pokemon copies the Ability of an ally that faints. Abilities that cannot be copied are As One, Battle Bond, Comatose, Commander, Disguise, Embody Aspect, Flower Gift, Forecast, Hunger Switch, Ice Face, Illusion, Imposter, Multitype, Neutralizing Gas, Poison Puppeteer, Power Construct, Power of Alchemy, Protosynthesis, Quark Drive, Receiver, RKS System, Schooling, Shields Down, Stance Change, Tera Shell, Tera Shift, Teraform Zero, Trace, Wonder Guard, Zen Mode, and Zero to Hero."
+      "description": "Este Pokémon copies the Ability of an ally that se debilita. Abilities that cannot be copied are As One, Battle Bond, Comatose, Commander, Disguise, Embody Aspect, Flower Gift, Forecast, Hunger Switch, Ice Face, Illusion, Imposter, Multitype, Neutralizing Gas, Poison Puppeteer, Power Construct, Power of Alchemy, Protosynthesis, Quark Drive, Receiver, RKS System, Schooling, Shields Down, Stance Change, Tera Shell, Tera Shift, Teraform Zero, Trace, Wonder Guard, Zen Mode, and Zero to Hero."
     },
     "Reckless": {
       "es": "Audaz",
       "latam": "Audaz",
       "display": "Audaz",
-      "description": "Aumenta en un 20% la potencia de los movimientos que causan daño de retroceso o fallan al estrellarse."
+      "description": "De este Pokémon attacks with recoil or crash damage have their power multiplied by 1.2. Does not affect Struggle."
     },
     "Refrigerate": {
       "es": "Piel Helada",
       "latam": "Piel Helada",
       "display": "Piel Helada",
-      "description": "This Pokemon's Normal-type moves become Ice-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects."
+      "description": "De este Pokémon Normal-type moves become Ice-type moves and have their power multiplied by 1.2. This effect comes after other effects that change a move's type, but before Ion Deluge and Electrify's effects."
     },
     "Regenerator": {
       "es": "Regeneración",
       "latam": "Regeneración",
       "display": "Regeneración",
-      "description": "Recupera 1/3 de sus PS máximos al retirarse del combate."
+      "description": "Este Pokémon restores 1/3 of its maximum PS, redondeado hacia abajo, when it se retira."
     },
     "Ripen": {
       "es": "Maduración",
       "latam": "Maduración",
       "display": "Maduración",
-      "description": "Duplica los efectos y la curación de las bayas que consuma este Pokémon."
+      "description": "When este Pokémon eats certain Berries, the effects are doubled. Berries that restore PS or PP have the amount doubled, Berries that raise stat stages have the amount doubled, Berries that halve damage taken quarter it instead, and a Jaboca Berry or Rowap Berry has the attacker lose 1/4 of its maximum PS, redondeado hacia abajo."
     },
     "Rivalry": {
       "es": "Rivalidad",
       "latam": "Rivalidad",
       "display": "Rivalidad",
-      "description": "Aumenta la potencia en un 25% contra rivales del mismo género, pero la reduce en un 25% contra el género opuesto."
+      "description": "De este Pokémon attacks have their power multiplied by 1.25 against targets of the same gender or multiplied by 0.75 against targets of the opposite gender. There is no modifier if either este Pokémon or al objetivo is genderless."
     },
     "Rock Head": {
       "es": "Cabeza Roca",
       "latam": "Cabeza Roca",
       "display": "Cabeza Roca",
-      "description": "Evita sufrir daño de retroceso al usar ataques de retroceso (excepto Combate)."
+      "description": "Este Pokémon does not take recoil damage, except Struggle. Does not affect Life Orb damage or crash damage."
     },
     "Rough Skin": {
       "es": "Piel Tosca",
       "latam": "Piel Tosca",
       "display": "Piel Tosca",
-      "description": "Los atacantes que usen movimientos de contacto contra este Pokémon pierden 1/8 de sus PS máximos."
+      "description": "Pokemon making contact with este Pokémon lose 1/8 of their maximum PS, redondeado hacia abajo."
     },
     "Sand Force": {
       "es": "Poder Arena",
       "latam": "Poder Arenoso",
       "display": "Poder Arena / Poder Arenoso",
-      "description": "Bajo Tormenta de Arena, los ataques de tipo Tierra, Roca y Acero aumentan su potencia en un 30% e inmune a la arena."
+      "description": "If Sandstorm is active, de este Pokémon Ground-, Rock-, and Steel-type attacks have their power multiplied by 1.3. Este Pokémon takes no damage from Sandstorm."
     },
     "Sand Rush": {
       "es": "Ímpetu Arena",
       "latam": "Ímpetu Arena",
       "display": "Ímpetu Arena",
-      "description": "Bajo Tormenta de Arena, la Velocidad se duplica y es inmune al daño de la arena."
+      "description": "If Sandstorm is active, de este Pokémon Velocidad is doubled. Este Pokémon takes no damage from Sandstorm."
     },
     "Sand Spit": {
       "es": "Expulsarena",
       "latam": "Expulsarena",
       "display": "Expulsarena",
-      "description": "Invoca una Tormenta de Arena al ser golpeado por un ataque."
+      "description": "When este Pokémon is hit by an attack, the effect of Sandstorm begins."
     },
     "Sand Stream": {
       "es": "Chorro Arena",
       "latam": "Chorro de Arena",
       "display": "Chorro Arena / Chorro de Arena",
-      "description": "Invoca una Tormenta de Arena al entrar en combate."
+      "description": "On switch-in, este Pokémon summons Sandstorm."
     },
     "Sand Veil": {
       "es": "Velo Arena",
       "latam": "Velo de Arena",
       "display": "Velo Arena / Velo de Arena",
-      "description": "Bajo Tormenta de Arena, la Evasión aumenta en un 20% y es inmune al daño de la arena."
+      "description": "If Sandstorm is active, the accuracy of moves used against este Pokémon is multiplied by 0.8. Este Pokémon takes no damage from Sandstorm."
     },
     "Sap Sipper": {
       "es": "Herbívoro",
       "latam": "Herbívoro",
       "display": "Herbívoro",
-      "description": "Otorga inmunidad a los movimientos de tipo Planta y aumenta el Ataque en 1 nivel al recibir uno."
+      "description": "Este Pokémon is immune to Grass-type moves and raises its Ataque by 1 stage when hit by a Grass-type move."
     },
     "Scrappy": {
       "es": "Intrépido",
       "latam": "Intrépido",
       "display": "Intrépido",
-      "description": "Permite que los movimientos de tipo Normal y Lucha golpeen a Pokémon de tipo Fantasma e inmune a Intimidación."
+      "description": "Este Pokémon can hit Ghost types with Normal- and Fighting-type moves. Este Pokémon is immune to the effect of the Intimidate Ability."
     },
     "Screen Cleaner": {
       "es": "Antibarrera",
       "latam": "Antibarrera",
       "display": "Antibarrera",
-      "description": "Elimina Pantalla de Luz, Reflejo y Velo Aurora de ambos lados del campo al entrar en combate."
+      "description": "On switch-in, the effects of Aurora Veil, Light Screen, and Reflect end for both sides."
     },
     "Shadow Tag": {
       "es": "Sombra Trampa",
       "latam": "Sombra Trampa",
       "display": "Sombra Trampa",
-      "description": "Impide que los Pokémon rivales se retiren del combate (excepto Pokémon de tipo Fantasma)."
+      "description": "Prevents opposing Pokemon from choosing to retirarse, unless they are holding a Shed Shell, are a Ghost type, or also have this Ability."
     },
     "Sharpness": {
       "es": "Cortante",
       "latam": "Cortante",
       "display": "Cortante",
-      "description": "Aumenta en un 50% la potencia de los movimientos basados en cortes, tajos y espadas."
+      "description": "De este Pokémon movimientos de corte have their power multiplied by 1.5."
     },
     "Shed Skin": {
       "es": "Mudar",
       "latam": "Mudar",
       "display": "Mudar",
-      "description": "Tiene un 33% de probabilidad de curar cualquier problema de estado al final de cada turno."
+      "description": "Este Pokémon has a 33% chance to have its non-volatile problema de estado cured at the end of each turn."
     },
     "Sheer Force": {
       "es": "Potencia Bruta",
       "latam": "Potencia Bruta",
       "display": "Potencia Bruta",
-      "description": "Aumenta la potencia de los ataques con efectos secundarios en un 30%, pero anula dichos efectos secundarios."
+      "description": "De este Pokémon attacks with efectos secundarios have their power multiplied by 1.3, but the efectos secundarios are removed. If a efecto secundario was removed, it also removes del usuario Life Orb recoil and Shell Bell recovery, and prevents del objetivo Anger Shell, Berserk, Color Change, Emergency Exit, Pickpocket, Wimp Out, Red Card, Eject Button, Kee Berry, and Maranga Berry from activating."
     },
     "Shell Armor": {
       "es": "Caparazón",
       "latam": "Caparazón",
       "display": "Caparazón",
-      "description": "This Pokemon cannot be struck by a critical hit."
+      "description": "Este Pokémon cannot be struck by a golpe crítico."
     },
     "Shield Dust": {
       "es": "Polvo Escudo",
       "latam": "Polvo Escudo",
       "display": "Polvo Escudo",
-      "description": "Bloquea los efectos secundarios adicionales de los ataques recibidos."
+      "description": "Este Pokémon is not affected by the efecto secundario of another Pokemon's attack. Attacks with efectos secundarios that are prevented include those with a chance (even 100%) to paralyze, sleep, freeze, burn, poison, confuse, cause este Pokémon to retroceder, cause de este Pokémon stat stages to be lowered, as well as Anchor Shot, Eerie Spell, Fling, Psychic Noise, Salt Cure, Spirit Shackle, Syrup Bomb, and Throat Chop. The effect of Sparkling Aria is prevented if este Pokémon is the only target. Secondary effects added by King's Rock, Razor Fang, and the Poison Touch, Stench, and Toxic Chain Abilities are also prevented against este Pokémon."
     },
     "Skill Link": {
       "es": "Encadenado",
       "latam": "Encadenado",
       "display": "Encadenado",
-      "description": "Garantiza que los movimientos de golpes múltiples (como Carámbano o Pin Misil) siempre acierten el número máximo de veces."
+      "description": "De este Pokémon multi-hit attacks always hit the maximum number of times. Triple Kick and Triple Axel do not check accuracy for the second and third hits."
     },
     "Slush Rush": {
       "es": "Quitanieves",
       "latam": "Quitanieves",
       "display": "Quitanieves",
-      "description": "Bajo Nieve / Granizo, la Velocidad de este Pokémon se duplica."
+      "description": "If Snow is active, de este Pokémon Velocidad is doubled."
     },
     "Sniper": {
       "es": "Francotirador",
       "latam": "Puntería",
       "display": "Francotirador / Puntería",
-      "description": "Aumenta el daño de los golpes críticos de 1.5x a 2.25x de potencia."
+      "description": "If este Pokémon strikes with a golpe crítico, the damage is multiplied by 1.5."
     },
     "Snow Cloak": {
       "es": "Manto Níveo",
       "latam": "Manto Níveo",
       "display": "Manto Níveo",
-      "description": "Bajo Nieve / Granizo, la Evasión aumenta en un 20% y es inmune al daño de granizo."
+      "description": "If Snow is active, the accuracy of moves used against este Pokémon is multiplied by 0.8."
     },
     "Snow Warning": {
       "es": "Nevada",
       "latam": "Nevada",
       "display": "Nevada",
-      "description": "Invoca Nieve / Granizo en el campo de batalla al entrar en combate."
+      "description": "On switch-in, este Pokémon summons Snow."
     },
     "Solar Power": {
       "es": "Poder Solar",
       "latam": "Poder Solar",
       "display": "Poder Solar",
-      "description": "Bajo sol intenso, el Ataque Especial aumenta en un 50%, pero pierde 1/8 de PS máximos al final de cada turno."
+      "description": "If Sunny Day is active, de este Pokémon Ataque Especial is multiplied by 1.5 and it loses 1/8 of its maximum PS, redondeado hacia abajo, at the end of each turn. These effects are prevented if the Pokemon is holding a Utility Umbrella."
     },
     "Solid Rock": {
       "es": "Roca Sólida",
       "latam": "Roca Sólida",
       "display": "Roca Sólida",
-      "description": "Reduce en un 25% el daño recibido por ataques súper efectivos."
+      "description": "Este Pokémon receives 3/4 damage from supereffective attacks."
     },
     "Soundproof": {
       "es": "Insonorizar",
       "latam": "Insonorización",
       "display": "Insonorizar / Insonorización",
-      "description": "Este Pokémon es totalmente inmune a todos los movimientos de sonido (como Vozarrón o Alarido)."
+      "description": "Este Pokémon is immune to sound-based moves, unless it used the move."
     },
     "Speed Boost": {
       "es": "Impulso",
       "latam": "Impulso",
       "display": "Impulso",
-      "description": "Aumenta la Velocidad en 1 nivel al final de cada turno en combate."
+      "description": "De este Pokémon Velocidad is raised by 1 stage at the end of each full turn it has been on the field."
     },
     "Spicy Spray": {
       "es": "Salpicante",
       "latam": "Salpicante",
       "display": "Salpicante",
-      "description": "If this Pokemon is hit by an attack, the attacker becomes burned."
+      "description": "If este Pokémon is hit by an attack, the attacker becomes burned."
     },
     "Stall": {
       "es": "Rezagado",
       "latam": "Rezagado",
       "display": "Rezagado",
-      "description": "This Pokemon moves last among Pokemon using the same or greater priority moves."
+      "description": "Este Pokémon moves last among Pokemon using the same or greater prioridad moves."
     },
     "Stalwart": {
       "es": "Acérrimo",
       "latam": "Acérrimo",
       "display": "Acérrimo",
-      "description": "This Pokemon's moves cannot be redirected to a different target by any effect."
+      "description": "De este Pokémon moves cannot be redirected to a different target by any effect."
     },
     "Stamina": {
       "es": "Firmeza",
       "latam": "Firmeza",
       "display": "Firmeza",
-      "description": "Aumenta la Defensa en 1 nivel cada vez que recibe un golpe de un ataque."
+      "description": "De este Pokémon Defensa is raised by 1 stage after it is damaged by a move."
     },
     "Stance Change": {
       "es": "Cambio Táctico",
       "latam": "Cambio Táctico",
       "display": "Cambio Táctico",
-      "description": "Cambia a Forma Filo al usar un movimiento de ataque, y a Forma Escudo al usar Escudo Real."
+      "description": "If este Pokémon is an Aegislash, it changes to Blade Forme before using an attacking move, and changes to Shield Forme before using King's Shield."
     },
     "Static": {
       "es": "Electricidad Estática",
       "latam": "Electricidad Estática",
       "display": "Electricidad Estática",
-      "description": "Tiene un 30% de probabilidad de paralizar al atacante al recibir un movimiento de contacto."
+      "description": "30% chance a Pokemon making contact with este Pokémon will be paralyzed."
     },
     "Steadfast": {
       "es": "Impasible",
       "latam": "Impasible",
       "display": "Impasible",
-      "description": "Aumenta la Velocidad en 1 nivel cada vez que este Pokémon retrocede."
+      "description": "If este Pokémon retrocede, its Velocidad is raised by 1 stage."
     },
     "Stench": {
       "es": "Hedor",
       "latam": "Hedor",
       "display": "Hedor",
-      "description": "Tiene un 10% de probabilidad de hacer retroceder al objetivo con sus ataques directos."
+      "description": "De este Pokémon attacks without a chance to make al objetivo retroceder gain a 10% chance to make al objetivo retroceder."
     },
     "Sticky Hold": {
       "es": "Viscosidad",
       "latam": "Viscosidad",
       "display": "Viscosidad",
-      "description": "Impide que otros Pokémon o efectos puedan robar o quitar el objeto equipado de este Pokémon."
+      "description": "Este Pokémon cannot lose its held item due to another Pokemon's Ability or attack, unless the attack knocks out este Pokémon. A Sticky Barb will be transferred to other Pokemon regardless of this Ability."
     },
     "Strong Jaw": {
       "es": "Mandíbula Fuerte",
       "latam": "Mandíbula Fuerte",
       "display": "Mandíbula Fuerte",
-      "description": "Aumenta en un 50% la potencia de los movimientos basados en mordiscos."
+      "description": "De este Pokémon bite-based attacks have their power multiplied by 1.5."
     },
     "Sturdy": {
       "es": "Robustez",
       "latam": "Robustez",
       "display": "Robustez",
-      "description": "Si tiene los PS al 100%, sobrevive a cualquier golpe fulminante con 1 PS e inmune a movimientos de K.O. directo."
+      "description": "If este Pokémon is at full PS, it survives one hit with at least 1 PS. OHKO moves fail when used against este Pokémon."
     },
     "Super Luck": {
       "es": "Afortunado",
       "latam": "Supersuerte",
       "display": "Afortunado / Supersuerte",
-      "description": "Aumenta la probabilidad de asestar golpes críticos en 1 nivel."
+      "description": "De este Pokémon golpe crítico ratio is raised by 1 stage."
     },
     "Supersweet Syrup": {
       "es": "Néctar Dulce",
       "latam": "Néctar Dulce",
       "display": "Néctar Dulce",
-      "description": "Reduce la Evasión de todos los Pokémon rivales en 1 nivel al entrar por primera vez al combate."
+      "description": "On switch-in, este Pokémon lowers the evasiveness of opponents 1 stage. Once per battle."
     },
     "Supreme Overlord": {
       "es": "General Supremo",
       "latam": "General Supremo",
       "display": "General Supremo",
-      "description": "Aumenta el Ataque y Ataque Especial en un 10% por cada Pokémon aliado debilitado en el equipo."
+      "description": "De este Pokémon moves have their power multiplied by 1+(X*0.1), where X is the total number of times any Pokemon has fainted on del usuario side when this Ability became active, and X cannot be greater than 5."
     },
     "Surge Surfer": {
       "es": "Cola Surf",
       "latam": "Cola Surf",
       "display": "Cola Surf",
-      "description": "Bajo Campo Eléctrico, la Velocidad de este Pokémon se duplica."
+      "description": "If Electric Terrain is active, de este Pokémon Velocidad is doubled."
     },
     "Swarm": {
       "es": "Enjambre",
       "latam": "Enjambre",
       "display": "Enjambre",
-      "description": "Cuando los PS están al 33% o menos, la potencia de los movimientos de tipo Bicho se multiplica por 1.5x."
+      "description": "When este Pokémon has 1/3 or less of its maximum PS, redondeado hacia abajo, its offensive stat is multiplied by 1.5 while using a Bug-type attack."
     },
     "Sweet Veil": {
       "es": "Velo Dulce",
       "latam": "Velo Dulce",
       "display": "Velo Dulce",
-      "description": "Evita que este Pokémon y sus aliados se queden dormidos."
+      "description": "Este Pokémon and its allies cannot fall asleep, but those already asleep do not wake up immediately. Este Pokémon and its allies cannot use Rest successfully or become affected by Yawn, and those previously affected will not fall asleep."
     },
     "Swift Swim": {
       "es": "Nado Rápido",
       "latam": "Nado Rápido",
       "display": "Nado Rápido",
-      "description": "Bajo lluvia, la Velocidad de este Pokémon se duplica."
+      "description": "If Rain Dance is active, de este Pokémon Velocidad is doubled. This effect is prevented if este Pokémon is holding a Utility Umbrella."
     },
     "Symbiosis": {
       "es": "Simbiosis",
       "latam": "Simbiosis",
       "display": "Simbiosis",
-      "description": "If an ally uses its item, this Pokemon gives its item to that ally immediately. Does not activate if the ally's item was stolen or knocked off, or if the ally used an Eject Button or Eject Pack."
+      "description": "If an ally uses its item, este Pokémon gives its item to that ally immediately. Does not activate if the ally's item was stolen or knocked off, or if the ally used an Eject Button or Eject Pack."
     },
     "Synchronize": {
       "es": "Sincronía",
       "latam": "Sincronía",
       "display": "Sincronía",
-      "description": "Si un rival le causa quemadura, parálisis o envenenamiento, le transmite el mismo problema de estado."
+      "description": "If another Pokemon burns, paralyzes, poisons, or badly poisons este Pokémon, that Pokemon receives the same non-volatile problema de estado."
     },
     "Tangled Feet": {
       "es": "Tumbos",
       "latam": "Tambaleo",
       "display": "Tumbos / Tambaleo",
-      "description": "Duplica la Evasión de este Pokémon mientras esté confundido."
+      "description": "De este Pokémon evasiveness is doubled as long as it is confused."
     },
     "Technician": {
       "es": "Experto",
       "latam": "Experto",
       "display": "Experto",
-      "description": "Aumenta en un 50% la potencia de los movimientos que tengan 60 de potencia base o menos."
+      "description": "De este Pokémon moves of 60 power or less have their power multiplied by 1.5, including Struggle. This effect comes after a move's effect changes its own power."
     },
     "Telepathy": {
       "es": "Telepatía",
       "latam": "Telepatía",
       "display": "Telepatía",
-      "description": "Este Pokémon no recibe daño de los ataques de área de sus aliados en combates dobles."
+      "description": "Este Pokémon does not take damage from attacks made by its allies."
     },
     "Thick Fat": {
       "es": "Sebo",
       "latam": "Sebo",
       "display": "Sebo",
-      "description": "Reduce a la mitad el daño recibido de movimientos de tipo Fuego y tipo Hielo."
+      "description": "If a Pokemon uses a Fire- or Ice-type attack against este Pokémon, that Pokemon's offensive stat is halved when calculating the damage to este Pokémon."
     },
     "Torrent": {
       "es": "Torrente",
       "latam": "Torrente",
       "display": "Torrente",
-      "description": "Cuando los PS están al 33% o menos, la potencia de los movimientos de tipo Agua se multiplica por 1.5x."
+      "description": "When este Pokémon has 1/3 or less of its maximum PS, redondeado hacia abajo, its offensive stat is multiplied by 1.5 while using a Water-type attack."
     },
     "Tough Claws": {
       "es": "Garra Dura",
       "latam": "Garra Dura",
       "display": "Garra Dura",
-      "description": "Aumenta en un 30% la potencia de los movimientos que hacen contacto físico."
+      "description": "De este Pokémon movimientos de contacto have their power multiplied by 1.3."
     },
     "Toxic Debris": {
       "es": "Capa Tóxica",
       "latam": "Capa Tóxica",
       "display": "Capa Tóxica",
-      "description": "Esparce Púas Tóxicas en el campo rival cada vez que recibe un movimiento de ataque físico."
+      "description": "If este Pokémon is hit by a physical attack, Toxic Spikes are set on the opposing side."
     },
     "Trace": {
       "es": "Calco",
       "latam": "Calco",
       "display": "Calco",
-      "description": "Copia la habilidad de un Pokémon rival al entrar en combate."
+      "description": "On switch-in, este Pokémon copies a random opposing Pokemon's Ability. Abilities that cannot be copied are As One, Battle Bond, Comatose, Commander, Disguise, Embody Aspect, Flower Gift, Forecast, Hunger Switch, Ice Face, Illusion, Imposter, Multitype, Neutralizing Gas, Poison Puppeteer, Power Construct, Power of Alchemy, Protosynthesis, Quark Drive, Receiver, RKS System, Schooling, Shields Down, Stance Change, Teraform Zero, Tera Shell, Tera Shift, Trace, Zen Mode, and Zero to Hero. If no opposing Pokemon has an Ability that can be copied, this Ability will activate as soon as one does."
     },
     "Unaware": {
       "es": "Ignorante",
       "latam": "Ignorancia",
       "display": "Ignorante / Ignorancia",
-      "description": "Este Pokémon ignora los aumentos y reducciones de estadísticas del rival al atacar o recibir daño."
+      "description": "Este Pokémon ignores other Pokemon's Ataque, Ataque Especial, and accuracy stat stages when taking damage, and ignores other Pokemon's Defensa, Defensa Especial, and evasiveness stat stages when dealing damage."
     },
     "Unburden": {
       "es": "Liviano",
       "latam": "Liviano",
       "display": "Liviano",
-      "description": "Duplica la Velocidad tras consumir o perder el objeto equipado durante el combate."
+      "description": "If este Pokémon loses its held item for any reason, its Velocidad is doubled as long as it remains active, has this Ability, and is not holding an item."
     },
     "Unnerve": {
       "es": "Nerviosismo",
       "latam": "Nerviosismo",
       "display": "Nerviosismo",
-      "description": "Impide que los Pokémon rivales puedan consumir sus bayas equipadas."
+      "description": "While este Pokémon is active, it prevents opposing Pokemon from using their Berries. This Ability activates before hazards and other Abilities take effect."
     },
     "Unseen Fist": {
       "es": "Puño Invisible",
       "latam": "Puño Invisible",
       "display": "Puño Invisible",
-      "description": "This Pokemon's contact moves ignore the target's protection, except Max Guard."
+      "description": "De este Pokémon movimientos de contacto ignore del objetivo protection, except Max Guard."
     },
     "Volt Absorb": {
       "es": "Absorbe Electricidad",
       "latam": "Absorbevoltios",
       "display": "Absorbe Electricidad / Absorbevoltios",
-      "description": "Otorga inmunidad a los ataques de tipo Eléctrico y recupera hasta un 25% de los PS máximos al recibir uno."
+      "description": "Este Pokémon is immune to Electric-type moves and restores 1/4 of its maximum PS, redondeado hacia abajo, when hit by an Electric-type move."
     },
     "Wandering Spirit": {
       "es": "Alma Errante",
       "latam": "Alma Errante",
       "display": "Alma Errante",
-      "description": "Pokemon making contact with this Pokemon have their Ability swapped with this one. Does not affect Pokemon with the Abilities As One, Battle Bond, Comatose, Commander, Disguise, Embody Aspect, Hunger Switch, Ice Face, Illusion, Multitype, Neutralizing Gas, Poison Puppeteer, Power Construct, Protosynthesis, Quark Drive, RKS System, Schooling, Shields Down, Stance Change, Tera Shell, Tera Shift, Teraform Zero, Wonder Guard, Zen Mode, or Zero to Hero."
+      "description": "Pokemon making contact with este Pokémon have their Ability swapped with this one. Does not affect Pokemon with the Abilities As One, Battle Bond, Comatose, Commander, Disguise, Embody Aspect, Hunger Switch, Ice Face, Illusion, Multitype, Neutralizing Gas, Poison Puppeteer, Power Construct, Protosynthesis, Quark Drive, RKS System, Schooling, Shields Down, Stance Change, Tera Shell, Tera Shift, Teraform Zero, Wonder Guard, Zen Mode, or Zero to Hero."
     },
     "Water Absorb": {
       "es": "Absorbe Agua",
       "latam": "Absorbeagua",
       "display": "Absorbe Agua / Absorbeagua",
-      "description": "Otorga inmunidad a los ataques de tipo Agua y recupera hasta un 25% de los PS máximos al recibir uno."
+      "description": "Este Pokémon is immune to Water-type moves and restores 1/4 of its maximum PS, redondeado hacia abajo, when hit by a Water-type move."
     },
     "Water Bubble": {
       "es": "Pompa",
       "latam": "Acuaburbuja",
       "display": "Pompa / Acuaburbuja",
-      "description": "Duplica la potencia de movimientos de tipo Agua, reduce a la mitad el daño por Fuego e inmune a quemaduras."
+      "description": "De este Pokémon offensive stat is doubled while using a Water-type attack. If a Pokemon uses a Fire-type attack against este Pokémon, that Pokemon's offensive stat is halved when calculating the damage to este Pokémon. Este Pokémon cannot be burned. Gaining this Ability while burned cures it."
     },
     "Weak Armor": {
       "es": "Armadura Frágil",
       "latam": "Armadura Frágil",
       "display": "Armadura Frágil",
-      "description": "Al recibir un ataque físico, reduce la Defensa en 1 nivel pero aumenta la Velocidad en 2 niveles."
+      "description": "If a physical attack hits este Pokémon, its Defensa is lowered by 1 stage and its Velocidad is raised by 2 stages."
     },
     "White Smoke": {
       "es": "Humo Blanco",
@@ -6546,7 +6546,7 @@
       "es": "Cambio Heroico",
       "latam": "Cambio Heroico",
       "display": "Cambio Heroico",
-      "description": "Al retirarse y volver al combate, se transforma en su poderosa Forma Heroica con estadísticas incrementadas."
+      "description": "If este Pokémon is a Palafin in Zero Form, switching out has it change to Hero Form."
     }
   },
   "items": {
