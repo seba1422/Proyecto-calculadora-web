@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rotom Dex | Pokédex &amp; Calculadora Pokémon Champions</title>
     <meta name="description"
-        content="Pokédex estilo Rotom Smartphone y calculadora de estadísticas, naturezas, SP, simulador de batalla y cobertura defensiva de equipos para Pokémon Champions.">
+        content="Pokédex estilo Rotom Smartphone y calculadora de daño competitivo, estadísticas, naturezas, SP, simulador de batalla y cobertura defensiva de equipos para Pokémon Champions.">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,7 +40,7 @@
                     </div>
                     <div class="rotom-brand-text">
                         <h1>ROTOM <span class="cyan">DEX</span></h1>
-                        <p>CHAMPIONS BATTLE</p>
+                        <p>CHAMPIONS BATTLE CALCULATOR</p>
                     </div>
                 </div>
 
@@ -77,8 +77,7 @@
                 </div>
 
                 <div class="loading-title">Sincronizando Rotom Dex...</div>
-                <p style="color: var(--text-secondary); font-size: 0.85rem;">Cargando datos oficiales de Pokémon
-                    Champions...</p>
+                <p style="color: var(--text-secondary); font-size: 0.85rem;">Cargando base de datos oficial de Pokémon Champions...</p>
 
                 <div class="rotom-boot-progress">
                     <div class="boot-progress-label">BOOT SEQUENCE</div>
@@ -117,14 +116,14 @@
                 </nav>
 
                 <!-- ========================================================
-                     BARRA DE BÚSQUEDA Y FILTROS
+                     BARRA DE BÚSQUEDA Y FILTROS GLOBALES (CONECTADA A P1 Y P2)
                      ======================================================== -->
                 <section class="rotom-filter-hub" v-if="activeTab !== 'team'">
                     <!-- Buscador de texto -->
                     <div class="search-field-container">
                         <span class="search-icon">🔍</span>
                         <input type="text" v-model="searchQuery" class="rotom-search-input"
-                            placeholder="Buscar por nombre o # Pokédex..." id="pokemon-search-input">
+                            placeholder="Buscar por nombre o # Pokédex (filtra Pestaña 1 y Simulador)..." id="pokemon-search-input">
                     </div>
 
                     <!-- Filtro por Generación -->
@@ -146,8 +145,8 @@
                         </select>
                     </div>
 
-                    <!-- Selector Rápido y Navegación D-Pad -->
-                    <div class="quick-pokemon-nav">
+                    <!-- Selector Rápido y Navegación D-Pad (Pestaña 1) -->
+                    <div class="quick-pokemon-nav" v-if="activeTab === 'info'">
                         <button class="nav-arrow-btn" @click="selectPrevPokemon" title="Anterior Pokémon"
                             id="nav-prev-btn">◀</button>
                         <select class="rotom-select" :value="selectedPokemon?.name" @change="e => {
@@ -172,8 +171,7 @@
                         <!-- Columna Izquierda: Visor Holográfico, Tipos y Habilidades -->
                         <div>
                             <div class="pokemon-hologram-frame">
-                                <div class="hologram-dex-number">#{{ String(selectedPokemon.dexNumber).padStart(3, '0')
-                                    }}</div>
+                                <div class="hologram-dex-number">#{{ String(selectedPokemon.dexNumber).padStart(3, '0') }}</div>
                                 <div class="hologram-name">{{ selectedPokemon.name }}</div>
 
                                 <img :src="pokemonArtwork" :alt="selectedPokemon.name" class="pokemon-hero-img"
@@ -190,26 +188,30 @@
                                 </div>
                             </div>
 
-                            <!-- Botón para añadir directamente al equipo -->
-                            <button class="team-action-btn primary" @click="addCurrentPokemonToTeam"
-                                style="width: 100%; margin-bottom: 14px; justify-content: center; padding: 10px;"
-                                id="add-to-team-btn">
-                                ➕ Añadir {{ selectedPokemon.name }} al Equipo (Pestaña 3)
-                            </button>
+                            <!-- Botón para añadir directamente al equipo con selector de slot -->
+                            <div class="add-to-team-wrapper" style="margin-bottom: 14px;">
+                                <button class="team-action-btn primary" @click="addCurrentPokemonToTeam(null)"
+                                    style="width: 100%; justify-content: center; padding: 10px; font-weight: bold;"
+                                    id="add-to-team-btn">
+                                    ➕ Añadir {{ selectedPokemon.name }} al Equipo (Pestaña 3)
+                                </button>
+                            </div>
 
-                            <!-- Habilidades de Champions -->
+                            <!-- Habilidades de Champions con Traducción Oficial y Verificada -->
                             <div class="rotom-card">
                                 <div class="card-header">
                                     <h3 class="card-title">✨ HABILIDADES</h3>
-                                    <span class="card-badge">VERIFICADAS</span>
+                                    <span class="card-badge">OFICIALES</span>
                                 </div>
                                 <div v-for="ab in verifiedAbilities" :key="ab.name" class="ability-pill-card">
                                     <div class="ability-name">
-                                        <span>{{ ab.displayName || ab.name }}</span>
-                                        <span v-if="ab.championsVerified" style="color: var(--color-success);">✓
-                                            Verificada</span>
+                                        <span style="font-weight: 700; color: var(--rotom-cyan);">{{ ab.displayName }}</span>
+                                        <span style="font-size: 0.72rem; color: var(--text-muted); margin-left: 6px;">({{ ab.name }})</span>
+                                        <span style="color: var(--color-success); font-size: 0.75rem; margin-left: auto;">✓ Verificada</span>
                                     </div>
-                                    <div class="ability-desc">{{ ab.description }}</div>
+                                    <div class="ability-desc" style="margin-top: 4px; font-size: 0.82rem; line-height: 1.4; color: var(--text-primary);">
+                                        {{ ab.description }}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -244,8 +246,7 @@
                                 <div class="effectiveness-grid">
                                     <!-- Súper Débil x4 -->
                                     <div v-if="typeEffectiveness.superWeak.length" class="eff-row">
-                                        <div class="eff-row-label" style="color: var(--color-danger);">⚠️ SÚPER DÉBIL
-                                            (×4)</div>
+                                        <div class="eff-row-label" style="color: var(--color-danger);">⚠️ SÚPER DÉBIL (×4)</div>
                                         <div class="eff-chips-container">
                                             <div v-for="item in typeEffectiveness.superWeak" :key="item.type"
                                                 class="eff-chip" :style="{ backgroundColor: item.color }">
@@ -257,8 +258,7 @@
 
                                     <!-- Débil x2 -->
                                     <div v-if="typeEffectiveness.weak.length" class="eff-row">
-                                        <div class="eff-row-label" style="color: var(--color-danger);">🔻 DÉBIL (×2)
-                                        </div>
+                                        <div class="eff-row-label" style="color: var(--color-danger);">🔻 DÉBIL (×2)</div>
                                         <div class="eff-chips-container">
                                             <div v-for="item in typeEffectiveness.weak" :key="item.type"
                                                 class="eff-chip" :style="{ backgroundColor: item.color }">
@@ -270,8 +270,7 @@
 
                                     <!-- Resistente x0.5 -->
                                     <div v-if="typeEffectiveness.resistant.length" class="eff-row">
-                                        <div class="eff-row-label" style="color: var(--color-success);">🛡 RESISTENTE
-                                            (×0.5)</div>
+                                        <div class="eff-row-label" style="color: var(--color-success);">🛡 RESISTENTE (×0.5)</div>
                                         <div class="eff-chips-container">
                                             <div v-for="item in typeEffectiveness.resistant" :key="item.type"
                                                 class="eff-chip" :style="{ backgroundColor: item.color }">
@@ -283,8 +282,7 @@
 
                                     <!-- Súper Resistente x0.25 -->
                                     <div v-if="typeEffectiveness.superResistant.length" class="eff-row">
-                                        <div class="eff-row-label" style="color: var(--color-success);">🔰 SÚPER
-                                            RESISTENTE (×0.25)</div>
+                                        <div class="eff-row-label" style="color: var(--color-success);">🔰 SÚPER RESISTENTE (×0.25)</div>
                                         <div class="eff-chips-container">
                                             <div v-for="item in typeEffectiveness.superResistant" :key="item.type"
                                                 class="eff-chip" :style="{ backgroundColor: item.color }">
@@ -296,8 +294,7 @@
 
                                     <!-- Inmune x0 -->
                                     <div v-if="typeEffectiveness.immune.length" class="eff-row">
-                                        <div class="eff-row-label" style="color: var(--color-immune);">✨ INMUNE (×0)
-                                        </div>
+                                        <div class="eff-row-label" style="color: var(--color-immune);">✨ INMUNE (×0)</div>
                                         <div class="eff-chips-container">
                                             <div v-for="item in typeEffectiveness.immune" :key="item.type"
                                                 class="eff-chip" :style="{ backgroundColor: item.color }">
@@ -314,254 +311,320 @@
                 </section>
 
                 <!-- ========================================================
-                     PESTAÑA 2: SIMULADOR DE BATALLA + CÁLCULO SP
+                     PESTAÑA 2: SIMULADOR DE BATALLA + CÁLCULO COMPETITIVO
                      ======================================================== -->
                 <section v-if="activeTab === 'battle'" class="tab-content-container" id="tab-battle">
 
                     <!-- Simulador de Daño (tres columnas: Atacante | Contexto | Defensor) -->
                     <div class="battle-simulator-layout">
 
-                        <!-- === ATACANTE === -->
+                        <!-- === PANEL ATACANTE === -->
                         <div class="battle-panel-attacker">
                             <div class="battle-panel-header attacker-label">⚔️ ATACANTE</div>
 
-                            <!-- Selección de Pokémon atacante -->
+                            <!-- Selección de Pokémon atacante (con buscador por nombre) -->
                             <div style="margin-bottom: 10px;">
-                                <label
-                                    style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-bottom: 4px;">Pokémon:</label>
-                                <select class="rotom-select" style="width:100%;" :value="attacker.pokemon?.name"
+                                <label class="panel-field-label">Buscar y Elegir Pokémon:</label>
+                                <div class="sub-search-box">
+                                    <input type="text" v-model="attackerPokemonSearch" class="rotom-search-input-mini"
+                                        placeholder="Filtrar por nombre...">
+                                </div>
+                                <select class="rotom-select" style="width:100%; margin-top: 4px;" :value="attacker.pokemon?.name"
                                     @change="e => { const f = roster.find(p=>p.name===e.target.value); if(f) setAttacker(f); }"
                                     id="attacker-pokemon-select">
-                                    <option value="">-- Seleccionar --</option>
-                                    <option v-for="p in roster" :key="p.name+p.form" :value="p.name">
+                                    <option value="">-- Seleccionar Atacante --</option>
+                                    <option v-for="p in filteredAttackerPokemon" :key="p.name+p.form" :value="p.name">
                                         #{{ String(p.dexNumber).padStart(3,'0') }} {{ p.name }}
                                     </option>
                                 </select>
                             </div>
 
-                            <!-- Naturaleza atacante -->
+                            <!-- Naturaleza atacante traducida al español + Info Box debajo -->
                             <div style="margin-bottom: 10px;" v-if="attacker.pokemon">
-                                <label
-                                    style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-bottom: 4px;">Naturaleza:</label>
+                                <label class="panel-field-label">Naturaleza:</label>
                                 <select class="rotom-select" style="width:100%;" :value="attacker.nature?.name"
                                     @change="e => selectAttackerNature(e.target.value)" id="attacker-nature-select">
                                     <option v-for="nat in natures" :key="nat.name" :value="nat.name">
-                                        {{ nat.name }} {{ nat.increasedStat ? '(+' +
-                                        nat.increasedStat.replace('sp_','Sp.').replace('_','') + ')' : '(Neutro)' }}
+                                        {{ getNatureDisplayName(nat.name) }}
                                     </option>
                                 </select>
+                                <div class="info-tag-box nature-info">
+                                    <span>🧠 <strong>Efecto:</strong> {{ getNatureDescription(attacker.nature?.name) }}</span>
+                                </div>
                             </div>
 
-                            <!-- Objeto atacante -->
+                            <!-- Habilidad atacante con información debajo -->
                             <div style="margin-bottom: 10px;" v-if="attacker.pokemon">
-                                <label
-                                    style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-bottom: 4px;">Objeto:</label>
-                                <select class="rotom-select" style="width:100%;" v-model="attacker.item"
+                                <label class="panel-field-label">Habilidad:</label>
+                                <select class="rotom-select" style="width:100%;" v-model="attacker.ability"
+                                    id="attacker-ability-select">
+                                    <option v-for="ab in attackerAvailableAbilities" :key="ab.name" :value="ab.name">
+                                        {{ ab.displayName }} ({{ ab.name }})
+                                    </option>
+                                </select>
+                                <div class="info-tag-box ability-info" v-if="attacker.ability">
+                                    <span>✨ {{ getAbilityDescription(attacker.ability) }}</span>
+                                </div>
+                            </div>
+
+                            <!-- Objeto atacante (con buscador por nombre e información debajo) -->
+                            <div style="margin-bottom: 10px;" v-if="attacker.pokemon">
+                                <label class="panel-field-label">Objeto Equipado:</label>
+                                <div class="sub-search-box">
+                                    <input type="text" v-model="attackerItemSearch" class="rotom-search-input-mini"
+                                        placeholder="Buscar objeto por nombre...">
+                                </div>
+                                <select class="rotom-select" style="width:100%; margin-top: 4px;" v-model="attacker.item"
                                     id="attacker-item-select">
                                     <option value="">Sin objeto</option>
-                                    <option v-for="it in items" :key="it.name" :value="it.name">{{
-                                        getItemDisplayName(it.name) }}</option>
+                                    <option v-for="it in filteredAttackerItems" :key="it.name" :value="it.name">
+                                        {{ getItemDisplayName(it.name) }}
+                                    </option>
                                 </select>
+                                <div class="info-tag-box item-info" v-if="attacker.item">
+                                    <span>🎒 {{ getItemDescription(attacker.item) }}</span>
+                                </div>
                             </div>
 
-                            <!-- SP Atacante (solo Ataque/Ataque Esp. y Velocidad) -->
-                            <div v-if="attacker.pokemon" style="margin-bottom: 10px;">
+                            <!-- SP Atacante con BOTÓN MAX SP y Colores por Naturaleza (Verde +, Rojo -) -->
+                            <div v-if="attacker.pokemon" style="margin-bottom: 12px;">
                                 <div class="card-header" style="margin-bottom: 8px; padding-bottom: 6px;">
-                                    <span
-                                        style="font-family: var(--font-heading); font-size: 0.78rem; color: var(--text-secondary);">SP
-                                        ATACANTE ({{ atkSpUsed }}/66)</span>
-                                    <button class="preset-btn reset" @click="resetAtkSp" style="font-size: 0.65rem;">↺
-                                        Limpiar</button>
+                                    <span style="font-family: var(--font-heading); font-size: 0.78rem; color: var(--text-secondary);">
+                                        SP ATACANTE ({{ atkSpUsed }}/66)
+                                    </span>
+                                    <button class="preset-btn reset" @click="resetAtkSp" style="font-size: 0.65rem;">↺ Limpiar</button>
                                 </div>
                                 <div class="sp-bar-track" style="margin-bottom: 8px;">
                                     <div class="sp-bar-fill" :style="{ width: ((atkSpUsed / 66) * 100) + '%' }"></div>
                                 </div>
                                 <div v-for="(label, key) in TRANSLATIONS.stats" :key="key" class="sp-stepper-row">
-                                    <span class="stepper-label">{{ label }}</span>
+                                    <span class="stepper-label" :class="{
+                                        'stat-nature-plus': getNatureStatEffect(attacker.nature?.name, key) === 'plus',
+                                        'stat-nature-minus': getNatureStatEffect(attacker.nature?.name, key) === 'minus'
+                                    }">
+                                        {{ label }}
+                                        <strong v-if="getNatureStatEffect(attacker.nature?.name, key) === 'plus'" style="font-size: 0.7rem;">(+)</strong>
+                                        <strong v-if="getNatureStatEffect(attacker.nature?.name, key) === 'minus'" style="font-size: 0.7rem;">(−)</strong>
+                                    </span>
                                     <span class="stepper-base">{{ atkBaseStats[key] }}</span>
                                     <div class="stepper-controls">
-                                        <button class="stepper-btn" @click="modifyAtkSp(key,-1)"
-                                            :disabled="attacker.sp[key]<=0">−</button>
+                                        <button class="stepper-btn" @click="modifyAtkSp(key,-1)" :disabled="attacker.sp[key]<=0">−</button>
                                         <span class="sp-current-badge">{{ attacker.sp[key] }}</span>
-                                        <button class="stepper-btn" @click="modifyAtkSp(key,1)"
-                                            :disabled="attacker.sp[key]>=32||atkSpRemaining<=0">+</button>
+                                        <button class="stepper-btn" @click="modifyAtkSp(key,1)" :disabled="attacker.sp[key]>=32||atkSpRemaining<=0">+</button>
+                                        <button class="max-sp-btn" @click="maxAtkSp(key)" :disabled="attacker.sp[key]>=32||atkSpRemaining<=0" title="Añadir hasta 32 SP">MAX</button>
                                     </div>
                                     <span class="stepper-final-stat">{{ atkFinalStats[key] }}</span>
                                 </div>
                             </div>
 
                             <!-- Etapas de stat atacante -->
-                            <div v-if="attacker.pokemon" style="margin-bottom: 10px;">
-                                <div
-                                    style="font-family: var(--font-heading); font-size: 0.72rem; color: var(--text-muted); margin-bottom: 6px;">
-                                    ETAPAS DE STAT</div>
+                            <div v-if="attacker.pokemon" style="margin-bottom: 12px;">
+                                <div style="font-family: var(--font-heading); font-size: 0.72rem; color: var(--text-muted); margin-bottom: 6px;">
+                                    ETAPAS DE STAT (BOOST)
+                                </div>
                                 <div class="stat-boost-row">
                                     <span class="stat-boost-label">Atq/At.E:</span>
-                                    <button class="boost-btn"
-                                        @click="attacker.atkBoost = Math.max(-6, attacker.atkBoost-1)">−</button>
-                                    <span class="boost-display"
-                                        :class="attacker.atkBoost>0?'positive':attacker.atkBoost<0?'negative':'zero'">
+                                    <button class="boost-btn" @click="attacker.atkBoost = Math.max(-6, attacker.atkBoost-1)">−</button>
+                                    <span class="boost-display" :class="attacker.atkBoost>0?'positive':attacker.atkBoost<0?'negative':'zero'">
                                         {{ attacker.atkBoost > 0 ? '+'+attacker.atkBoost : attacker.atkBoost }}
                                     </span>
-                                    <button class="boost-btn"
-                                        @click="attacker.atkBoost = Math.min(6, attacker.atkBoost+1)">+</button>
+                                    <button class="boost-btn" @click="attacker.atkBoost = Math.min(6, attacker.atkBoost+1)">+</button>
                                 </div>
                             </div>
 
-                            <!-- Movimientos del Atacante (4 botones seleccionables) -->
+                            <!-- ARMADO DE LOS 4 SLOTS DE MOVIMIENTOS DEL ATACANTE -->
                             <div v-if="attacker.pokemon">
-                                <div
-                                    style="font-family: var(--font-heading); font-size: 0.72rem; color: var(--text-muted); margin-bottom: 6px;">
-                                    SELECCIONAR MOVIMIENTO</div>
-                                <div class="battle-move-btns">
-                                    <button v-for="(mv, idx) in atkAvailableMoves.slice(0,8)" :key="mv.name"
-                                        class="battle-move-btn" :class="{ selected: attacker.selectedMove === mv.name }"
-                                        @click="attacker.selectedMove = mv.name; playSound('click')">
-                                        <div class="battle-move-type-bar"
-                                            :style="{ background: TYPE_COLORS[mv.type] || '#777' }"></div>
-                                        <span class="battle-move-name">{{ mv.displayName || mv.name }}</span>
-                                        <span class="battle-move-meta">{{ TRANSLATIONS.types[mv.type] || mv.type }} |
-                                            POD: {{ mv.power || '—' }}</span>
+                                <div class="card-header" style="margin-bottom: 6px; padding-bottom: 4px;">
+                                    <span style="font-family: var(--font-heading); font-size: 0.75rem; color: var(--text-secondary); font-weight: bold;">
+                                        🎯 4 SLOTS DE MOVIMIENTOS (ARMADO)
+                                    </span>
+                                </div>
+
+                                <!-- 4 Selectores para configurar los 4 ataques -->
+                                <div class="moves-builder-grid">
+                                    <div v-for="(slotMove, sIdx) in attackerMoveSlots" :key="sIdx" class="move-slot-config">
+                                        <span class="slot-mini-num">#{{ sIdx + 1 }}</span>
+                                        <select class="rotom-select-mini" :value="slotMove"
+                                            @change="e => setAttackerMoveSlot(sIdx, e.target.value)">
+                                            <option value="">-- Slot {{ sIdx + 1 }} Vacío --</option>
+                                            <option v-for="m in atkAvailableMoves" :key="m.name" :value="m.name">
+                                                {{ m.displayName }} ({{ TRANSLATIONS.types[m.type]||m.type }} | Pod:{{ m.power||'—' }})
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- 4 Botones táctiles interactivos de ataque para ejecutar cálculo -->
+                                <div style="font-family: var(--font-heading); font-size: 0.72rem; color: var(--rotom-cyan); margin: 8px 0 4px; font-weight: bold;">
+                                    💥 SELECCIONA EL ATAQUE A CALCULAR:
+                                </div>
+                                <div class="battle-move-btns-4">
+                                    <button v-for="(mvObj, idx) in attackerEquippedMoveObjects" :key="idx"
+                                        v-if="mvObj"
+                                        class="battle-move-card-btn"
+                                        :class="{ selected: attacker.selectedMove === mvObj.name }"
+                                        @click="attacker.selectedMove = mvObj.name; playSound('click')">
+                                        <div class="battle-move-card-top">
+                                            <span class="card-move-slot">SLOT {{ mvObj.slot }}</span>
+                                            <span class="card-move-type" :style="{ backgroundColor: TYPE_COLORS[mvObj.type] || '#777' }">
+                                                {{ TRANSLATIONS.types[mvObj.type] || mvObj.type }}
+                                            </span>
+                                        </div>
+                                        <div class="battle-move-card-name">{{ mvObj.displayName }}</div>
+                                        <div class="battle-move-card-meta">
+                                            <span>POD: <strong>{{ mvObj.power || '—' }}</strong></span>
+                                            <span>CAT: {{ TRANSLATIONS.categories[mvObj.category] || mvObj.category }}</span>
+                                        </div>
+                                        <div v-if="attacker.selectedMove === mvObj.name" class="active-attack-badge">
+                                            ⚡ ¡ATACANDO!
+                                        </div>
                                     </button>
                                 </div>
-                                <!-- Selector adicional para todos los movimientos -->
-                                <select class="rotom-select" style="width:100%; margin-top: 6px;"
-                                    v-model="attacker.selectedMove" @change="playSound('click')"
-                                    id="attacker-move-select">
-                                    <option value="">-- Todos los movimientos --</option>
-                                    <option v-for="m in atkAvailableMoves" :key="m.name" :value="m.name">
-                                        {{ m.displayName || m.name }} ({{ TRANSLATIONS.types[m.type]||m.type }}) POD:{{
-                                        m.power||'—' }}
-                                    </option>
-                                </select>
                             </div>
+
                         </div>
 
-                        <!-- === CONTEXTO DE BATALLA (Centro) === -->
+                        <!-- === PANEL CONTEXTO DE BATALLA (Centro) === -->
                         <div class="battle-context-col">
                             <div class="battle-context-title">⚡ CONTEXTO</div>
 
                             <button class="battle-swap-btn" @click="swapBattlePokemon"
-                                title="Invertir Atacante/Defensor" id="swap-battle-btn">⇄</button>
+                                title="Invertir Atacante y Defensor con todos sus stats, SPs, naturaleza y objetos" id="swap-battle-btn">
+                                ⇄
+                            </button>
 
+                            <!-- Formato -->
                             <div class="battle-ctx-group">
                                 <div class="battle-ctx-label">Formato</div>
-                                <select class="battle-ctx-select" v-model="battleField.format"
-                                    id="battle-format-select">
+                                <select class="battle-ctx-select" v-model="battleField.format" id="battle-format-select">
                                     <option value="singles">⚡ Individual</option>
                                     <option value="doubles">🤝 Dobles</option>
                                 </select>
                             </div>
 
+                            <!-- Clima (4 Oficiales: Sol, Lluvia, Arena, Nieve) -->
                             <div class="battle-ctx-group">
-                                <div class="battle-ctx-label">Clima</div>
-                                <select class="battle-ctx-select" v-model="battleField.weather"
-                                    id="battle-weather-select">
+                                <div class="battle-ctx-label">Clima (4 Oficiales)</div>
+                                <select class="battle-ctx-select" v-model="battleField.weather" id="battle-weather-select">
                                     <option value="">Sin Clima</option>
-                                    <option value="sun">☀️ Sol Intenso</option>
-                                    <option value="rain">🌧️ Lluvia</option>
-                                    <option value="sand">🌪️ Tormenta de Arena</option>
-                                    <option value="snow">❄️ Nevada</option>
-                                    <option value="harsh_sun">🌞 Sol Extremo</option>
-                                    <option value="heavy_rain">⛈️ Aguacero</option>
+                                    <option value="sun">☀️ Sol (Fuego +50%, Agua -50%)</option>
+                                    <option value="rain">🌧️ Lluvia (Agua +50%, Fuego -50%)</option>
+                                    <option value="sand">🌪️ Tormenta de Arena (Roca SpD +50%)</option>
+                                    <option value="snow">❄️ Nieve (Hielo Def +50%)</option>
                                 </select>
                             </div>
 
+                            <!-- Campos (4 Oficiales: Césped, Eléctrico, Niebla, Psíquico) -->
                             <div class="battle-ctx-group">
-                                <div class="battle-ctx-label">Terreno</div>
-                                <select class="battle-ctx-select" v-model="battleField.terrain"
-                                    id="battle-terrain-select">
-                                    <option value="">Sin Terreno</option>
-                                    <option value="electric">⚡ Terreno Eléctrico</option>
-                                    <option value="grassy">🌿 Terreno Herbáceo</option>
-                                    <option value="psychic">🔮 Terreno Psíquico</option>
-                                    <option value="misty">💨 Terreno de Niebla</option>
+                                <div class="battle-ctx-label">Campos (4 Oficiales)</div>
+                                <select class="battle-ctx-select" v-model="battleField.terrain" id="battle-terrain-select">
+                                    <option value="">Sin Campo</option>
+                                    <option value="grassy">🌿 Campo de Césped (Planta +30%, Terremoto -50%)</option>
+                                    <option value="electric">⚡ Campo Eléctrico (Eléctrico +30%)</option>
+                                    <option value="misty">🌸 Campo de Niebla (Dragón recibido -50%)</option>
+                                    <option value="psychic">🔮 Campo Psíquico (Psíquico +30%)</option>
                                 </select>
                             </div>
 
+                            <!-- Pantallas Defensor (Reflejo, Pantalla de Luz, Velo Aurora) -->
                             <div class="battle-ctx-group">
                                 <div class="battle-ctx-label">Pantallas Defensor</div>
                                 <div class="battle-toggle-group">
                                     <button class="battle-toggle-btn" :class="{ active: battleField.reflect }"
-                                        @click="battleField.reflect = !battleField.reflect">🪞 Reflejo</button>
+                                        @click="battleField.reflect = !battleField.reflect" title="Reduce daño físico a la mitad (0.5x)">
+                                        🪞 Reflejo
+                                    </button>
                                     <button class="battle-toggle-btn" :class="{ active: battleField.lightScreen }"
-                                        @click="battleField.lightScreen = !battleField.lightScreen">💡 P. Luz</button>
+                                        @click="battleField.lightScreen = !battleField.lightScreen" title="Reduce daño especial a la mitad (0.5x)">
+                                        💡 P. Luz
+                                    </button>
                                     <button class="battle-toggle-btn" :class="{ active: battleField.auroraVeil }"
-                                        @click="battleField.auroraVeil = !battleField.auroraVeil">🌈 Velo
-                                        Aurora</button>
-                                    <button class="battle-toggle-btn" :class="{ active: battleField.friendGuard }"
-                                        @click="battleField.friendGuard = !battleField.friendGuard">🤝 Guardián</button>
+                                        @click="battleField.auroraVeil = !battleField.auroraVeil" title="Reduce daño físico y especial a la mitad (0.5x)">
+                                        🌈 Velo Aurora
+                                    </button>
                                 </div>
                             </div>
 
+                            <!-- Modificadores Atacante (Solo Golpe Crítico Oficial) -->
                             <div class="battle-ctx-group">
-                                <div class="battle-ctx-label">Modificadores Atacante</div>
+                                <div class="battle-ctx-label">Modificador Atacante</div>
                                 <div class="battle-toggle-group">
-                                    <button class="battle-toggle-btn"
-                                        :class="{ 'active-orange': battleField.criticalHit }"
-                                        @click="battleField.criticalHit = !battleField.criticalHit">💥 Crítico</button>
-                                    <button class="battle-toggle-btn" :class="{ 'active-orange': battleField.tera }"
-                                        @click="battleField.tera = !battleField.tera">💎 Tera</button>
-                                    <button class="battle-toggle-btn" :class="{ 'active-orange': battleField.isBurned }"
-                                        @click="battleField.isBurned = !battleField.isBurned">🔥 Quemadura</button>
-                                    <button class="battle-toggle-btn"
-                                        :class="{ 'active-orange': battleField.helpingHand }"
-                                        @click="battleField.helpingHand = !battleField.helpingHand">🖐️ Ayuda</button>
+                                    <button class="battle-toggle-btn" :class="{ 'active-orange': battleField.criticalHit }"
+                                        @click="battleField.criticalHit = !battleField.criticalHit"
+                                        title="Daño x1.5. Ignora pantallas y aumentos defensivos del rival">
+                                        💥 Golpe Crítico
+                                    </button>
                                 </div>
                             </div>
 
-                            <!-- Tipo Tera -->
-                            <div class="battle-ctx-group" v-if="battleField.tera">
-                                <div class="battle-ctx-label">Tipo Tera (Atacante)</div>
-                                <select class="battle-ctx-select" v-model="battleField.teraType" id="tera-type-select">
-                                    <option value="">Tipo Base</option>
-                                    <option v-for="t in typesList" :key="t" :value="t">{{ TRANSLATIONS.types[t] || t }}
-                                    </option>
-                                </select>
-                            </div>
                         </div>
 
-                        <!-- === DEFENSOR === -->
+                        <!-- === PANEL DEFENSOR === -->
                         <div class="battle-panel-defender">
                             <div class="battle-panel-header defender-label">🛡️ DEFENSOR</div>
 
-                            <!-- Selección de Pokémon defensor -->
+                            <!-- Selección de Pokémon defensor (con buscador por nombre) -->
                             <div style="margin-bottom: 10px;">
-                                <label
-                                    style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-bottom: 4px;">Pokémon:</label>
-                                <select class="rotom-select" style="width:100%;" :value="defender.pokemon?.name"
+                                <label class="panel-field-label">Buscar y Elegir Pokémon:</label>
+                                <div class="sub-search-box">
+                                    <input type="text" v-model="defenderPokemonSearch" class="rotom-search-input-mini"
+                                        placeholder="Filtrar por nombre...">
+                                </div>
+                                <select class="rotom-select" style="width:100%; margin-top: 4px;" :value="defender.pokemon?.name"
                                     @change="e => { const f = roster.find(p=>p.name===e.target.value); if(f) setDefender(f); }"
                                     id="defender-pokemon-select">
-                                    <option value="">-- Seleccionar --</option>
-                                    <option v-for="p in roster" :key="p.name+p.form" :value="p.name">
+                                    <option value="">-- Seleccionar Defensor --</option>
+                                    <option v-for="p in filteredDefenderPokemon" :key="p.name+p.form" :value="p.name">
                                         #{{ String(p.dexNumber).padStart(3,'0') }} {{ p.name }}
                                     </option>
                                 </select>
                             </div>
 
-                            <!-- Naturaleza defensor -->
+                            <!-- Naturaleza defensor traducida + Info Box debajo -->
                             <div style="margin-bottom: 10px;" v-if="defender.pokemon">
-                                <label
-                                    style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-bottom: 4px;">Naturaleza:</label>
+                                <label class="panel-field-label">Naturaleza:</label>
                                 <select class="rotom-select" style="width:100%;" :value="defender.nature?.name"
                                     @change="e => selectDefenderNature(e.target.value)" id="defender-nature-select">
                                     <option v-for="nat in natures" :key="nat.name" :value="nat.name">
-                                        {{ nat.name }} {{ nat.increasedStat ? '(+' +
-                                        nat.increasedStat.replace('sp_','Sp.').replace('_','') + ')' : '(Neutro)' }}
+                                        {{ getNatureDisplayName(nat.name) }}
                                     </option>
                                 </select>
+                                <div class="info-tag-box nature-info">
+                                    <span>🧠 <strong>Efecto:</strong> {{ getNatureDescription(defender.nature?.name) }}</span>
+                                </div>
                             </div>
 
-                            <!-- Objeto defensor -->
+                            <!-- Habilidad defensor con información debajo -->
                             <div style="margin-bottom: 10px;" v-if="defender.pokemon">
-                                <label
-                                    style="font-size: 0.75rem; color: var(--text-muted); display: block; margin-bottom: 4px;">Objeto:</label>
-                                <select class="rotom-select" style="width:100%;" v-model="defender.item"
+                                <label class="panel-field-label">Habilidad:</label>
+                                <select class="rotom-select" style="width:100%;" v-model="defender.ability"
+                                    id="defender-ability-select">
+                                    <option v-for="ab in defenderAvailableAbilities" :key="ab.name" :value="ab.name">
+                                        {{ ab.displayName }} ({{ ab.name }})
+                                    </option>
+                                </select>
+                                <div class="info-tag-box ability-info" v-if="defender.ability">
+                                    <span>✨ {{ getAbilityDescription(defender.ability) }}</span>
+                                </div>
+                            </div>
+
+                            <!-- Objeto defensor (con buscador por nombre e información debajo) -->
+                            <div style="margin-bottom: 10px;" v-if="defender.pokemon">
+                                <label class="panel-field-label">Objeto Equipado:</label>
+                                <div class="sub-search-box">
+                                    <input type="text" v-model="defenderItemSearch" class="rotom-search-input-mini"
+                                        placeholder="Buscar objeto por nombre...">
+                                </div>
+                                <select class="rotom-select" style="width:100%; margin-top: 4px;" v-model="defender.item"
                                     id="defender-item-select">
                                     <option value="">Sin objeto</option>
-                                    <option v-for="it in items" :key="it.name" :value="it.name">{{
-                                        getItemDisplayName(it.name) }}</option>
+                                    <option v-for="it in filteredDefenderItems" :key="it.name" :value="it.name">
+                                        {{ getItemDisplayName(it.name) }}
+                                    </option>
                                 </select>
+                                <div class="info-tag-box item-info" v-if="defender.item">
+                                    <span>🎒 {{ getItemDescription(defender.item) }}</span>
+                                </div>
                             </div>
 
                             <!-- HP Restante del Defensor -->
@@ -580,49 +643,52 @@
                                     style="width:100%; margin-top: 4px; accent-color: var(--rotom-cyan);" />
                             </div>
 
-                            <!-- SP Defensor -->
-                            <div v-if="defender.pokemon" style="margin-bottom: 10px;">
+                            <!-- SP Defensor con BOTÓN MAX SP y Colores por Naturaleza -->
+                            <div v-if="defender.pokemon" style="margin-bottom: 12px;">
                                 <div class="card-header" style="margin-bottom: 8px; padding-bottom: 6px;">
-                                    <span
-                                        style="font-family: var(--font-heading); font-size: 0.78rem; color: var(--text-secondary);">SP
-                                        DEFENSOR ({{ defSpUsed }}/66)</span>
-                                    <button class="preset-btn reset" @click="resetDefSp" style="font-size: 0.65rem;">↺
-                                        Limpiar</button>
+                                    <span style="font-family: var(--font-heading); font-size: 0.78rem; color: var(--text-secondary);">
+                                        SP DEFENSOR ({{ defSpUsed }}/66)
+                                    </span>
+                                    <button class="preset-btn reset" @click="resetDefSp" style="font-size: 0.65rem;">↺ Limpiar</button>
                                 </div>
                                 <div class="sp-bar-track" style="margin-bottom: 8px;">
                                     <div class="sp-bar-fill" :style="{ width: ((defSpUsed / 66) * 100) + '%' }"></div>
                                 </div>
                                 <div v-for="(label, key) in TRANSLATIONS.stats" :key="key" class="sp-stepper-row">
-                                    <span class="stepper-label">{{ label }}</span>
+                                    <span class="stepper-label" :class="{
+                                        'stat-nature-plus': getNatureStatEffect(defender.nature?.name, key) === 'plus',
+                                        'stat-nature-minus': getNatureStatEffect(defender.nature?.name, key) === 'minus'
+                                    }">
+                                        {{ label }}
+                                        <strong v-if="getNatureStatEffect(defender.nature?.name, key) === 'plus'" style="font-size: 0.7rem;">(+)</strong>
+                                        <strong v-if="getNatureStatEffect(defender.nature?.name, key) === 'minus'" style="font-size: 0.7rem;">(−)</strong>
+                                    </span>
                                     <span class="stepper-base">{{ defBaseStats[key] }}</span>
                                     <div class="stepper-controls">
-                                        <button class="stepper-btn" @click="modifyDefSp(key,-1)"
-                                            :disabled="defender.sp[key]<=0">−</button>
+                                        <button class="stepper-btn" @click="modifyDefSp(key,-1)" :disabled="defender.sp[key]<=0">−</button>
                                         <span class="sp-current-badge">{{ defender.sp[key] }}</span>
-                                        <button class="stepper-btn" @click="modifyDefSp(key,1)"
-                                            :disabled="defender.sp[key]>=32||defSpRemaining<=0">+</button>
+                                        <button class="stepper-btn" @click="modifyDefSp(key,1)" :disabled="defender.sp[key]>=32||defSpRemaining<=0">+</button>
+                                        <button class="max-sp-btn" @click="maxDefSp(key)" :disabled="defender.sp[key]>=32||defSpRemaining<=0" title="Añadir hasta 32 SP">MAX</button>
                                     </div>
                                     <span class="stepper-final-stat">{{ defFinalStats[key] }}</span>
                                 </div>
                             </div>
 
                             <!-- Etapas de stat defensor -->
-                            <div v-if="defender.pokemon" style="margin-bottom: 10px;">
-                                <div
-                                    style="font-family: var(--font-heading); font-size: 0.72rem; color: var(--text-muted); margin-bottom: 6px;">
-                                    ETAPAS DE STAT</div>
+                            <div v-if="defender.pokemon" style="margin-bottom: 12px;">
+                                <div style="font-family: var(--font-heading); font-size: 0.72rem; color: var(--text-muted); margin-bottom: 6px;">
+                                    ETAPAS DE STAT (BOOST)
+                                </div>
                                 <div class="stat-boost-row">
                                     <span class="stat-boost-label">Def/Def.E:</span>
-                                    <button class="boost-btn"
-                                        @click="defender.defBoost = Math.max(-6, defender.defBoost-1)">−</button>
-                                    <span class="boost-display"
-                                        :class="defender.defBoost>0?'positive':defender.defBoost<0?'negative':'zero'">
+                                    <button class="boost-btn" @click="defender.defBoost = Math.max(-6, defender.defBoost-1)">−</button>
+                                    <span class="boost-display" :class="defender.defBoost>0?'positive':defender.defBoost<0?'negative':'zero'">
                                         {{ defender.defBoost > 0 ? '+'+defender.defBoost : defender.defBoost }}
                                     </span>
-                                    <button class="boost-btn"
-                                        @click="defender.defBoost = Math.min(6, defender.defBoost+1)">+</button>
+                                    <button class="boost-btn" @click="defender.defBoost = Math.min(6, defender.defBoost+1)">+</button>
                                 </div>
                             </div>
+
                         </div>
                     </div>
 
@@ -631,11 +697,9 @@
                         <div class="damage-result-title">⚡ RESULTADO DE DAÑO — {{ damageResult.moveName }}</div>
 
                         <div class="damage-headline">
-                            <span class="damage-range-text">{{ damageResult.minDmg }} — {{ damageResult.maxDmg }}</span>
-                            <span class="damage-pct-text">({{ damageResult.minPct }}% — {{ damageResult.maxPct
-                                }}%)</span>
-                            <span class="damage-ko-badge" :class="damageResult.koClass">{{ damageResult.koLabel
-                                }}</span>
+                            <span class="damage-range-text">{{ damageResult.minDmg }} — {{ damageResult.maxDmg }} PS</span>
+                            <span class="damage-pct-text">({{ damageResult.minPct }}% — {{ damageResult.maxPct }}%)</span>
+                            <span class="damage-ko-badge" :class="damageResult.koClass">{{ damageResult.koLabel }}</span>
                         </div>
 
                         <div class="damage-bar-container">
@@ -662,28 +726,31 @@
 
                         <!-- Detalle del cálculo -->
                         <div class="damage-calc-details">
-                            <div><strong>Mov:</strong> {{ damageResult.moveName }} | <strong>Tipo:</strong> {{
-                                TRANSLATIONS.types[damageResult.moveType] || damageResult.moveType }} |
-                                <strong>Cat:</strong> {{ TRANSLATIONS.categories[damageResult.category] ||
-                                damageResult.category }}
+                            <div>
+                                <strong>Movimiento:</strong> {{ damageResult.moveName }} | 
+                                <strong>Tipo:</strong> {{ TRANSLATIONS.types[damageResult.moveType] || damageResult.moveType }} | 
+                                <strong>Categoría:</strong> {{ TRANSLATIONS.categories[damageResult.category] || damageResult.category }}
                             </div>
-                            <div><strong>Potencia base:</strong> {{ damageResult.basePower }} | <strong>STAB:</strong>
-                                {{ damageResult.stab }}x | <strong>Efectividad:</strong> {{ damageResult.typeEff }}x
+                            <div>
+                                <strong>Potencia:</strong> {{ damageResult.basePower }} | 
+                                <strong>STAB:</strong> {{ damageResult.stab }}x | 
+                                <strong>Efectividad:</strong> {{ damageResult.typeEff }}x
                             </div>
-                            <div><strong>Ataque final:</strong> {{ damageResult.atkStat }} vs <strong>Defensa
-                                    final:</strong> {{ damageResult.defStat }}</div>
-                            <div v-if="damageResult.modifiers"><strong>Modificadores:</strong> {{ damageResult.modifiers
-                                }}</div>
+                            <div>
+                                <strong>Ataque Atacante:</strong> {{ damageResult.atkStat }} vs 
+                                <strong>Defensa Defensor:</strong> {{ damageResult.defStat }}
+                            </div>
+                            <div v-if="damageResult.modifiers">
+                                <strong>Modificadores:</strong> {{ damageResult.modifiers }}
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Estado vacío si no hay Pokémon seleccionados -->
+                    <!-- Estado vacío si falta información -->
                     <div v-else-if="!attacker.pokemon || !defender.pokemon || !attacker.selectedMove"
                         style="text-align:center; padding: 30px; color: var(--text-muted); font-family: var(--font-mono); font-size: 0.85rem;">
-                        <div style="font-size: 2rem; margin-bottom: 12px;">⚔️</div>
-                        <div>Selecciona un <strong style="color: var(--rotom-orange)">Atacante</strong>, un <strong
-                                style="color: #4A90D9">Defensor</strong> y un <strong
-                                style="color: var(--rotom-cyan)">Movimiento</strong> para ver el cálculo de daño.</div>
+                        <div style="font-size: 2.2rem; margin-bottom: 12px;">⚔️</div>
+                        <div>Selecciona un <strong style="color: var(--rotom-orange)">Atacante</strong>, un <strong style="color: #4A90D9">Defensor</strong> y un <strong style="color: var(--rotom-cyan)">Movimiento</strong> para ver el cálculo de daño.</div>
                     </div>
 
                 </section>
@@ -695,8 +762,7 @@
 
                     <!-- Barra de Acciones Rápidas de Equipo -->
                     <div class="team-action-bar">
-                        <div
-                            style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: var(--rotom-cyan);">
+                        <div style="font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: var(--rotom-cyan);">
                             ⚡ COBERTURA DEFENSIVA DEL EQUIPO ({{ filledTeamCount }} / 6)
                         </div>
                         <div class="team-quick-btns">
@@ -709,12 +775,11 @@
                         </div>
                     </div>
 
-                    <!-- 6 Ranuras de Pokémon del Equipo -->
+                    <!-- 6 Ranuras de Pokémon del Equipo con Buscador -->
                     <div class="team-slots-grid">
                         <div v-for="(slot, index) in teamSlots" :key="slot.id" class="team-slot-card">
                             <span class="slot-number-tag">SLOT {{ slot.id }}</span>
-                            <button class="slot-clear-btn" @click="clearSlot(index)"
-                                title="Limpiar este slot">✕</button>
+                            <button class="slot-clear-btn" @click="clearSlot(index)" title="Limpiar este slot">✕</button>
 
                             <!-- Imagen sprite -->
                             <img v-if="slot.dexNumber" :src="getTeamSlotSprite(slot)" :alt="slot.pokemonName"
@@ -738,13 +803,11 @@
                             <div class="slot-type-selectors">
                                 <select v-model="slot.types[0]" class="slot-type-select" @change="playSound('click')">
                                     <option value="">Tipo 1 (Ninguno)</option>
-                                    <option v-for="t in typesList" :key="t" :value="t">{{ TRANSLATIONS.types[t] || t }}
-                                    </option>
+                                    <option v-for="t in typesList" :key="t" :value="t">{{ TRANSLATIONS.types[t] || t }}</option>
                                 </select>
                                 <select v-model="slot.types[1]" class="slot-type-select" @change="playSound('click')">
                                     <option value="">Tipo 2 (Ninguno)</option>
-                                    <option v-for="t in typesList" :key="t" :value="t">{{ TRANSLATIONS.types[t] || t }}
-                                    </option>
+                                    <option v-for="t in typesList" :key="t" :value="t">{{ TRANSLATIONS.types[t] || t }}</option>
                                 </select>
                             </div>
                         </div>
@@ -755,8 +818,7 @@
                         <div class="rotom-ai-avatar">🤖</div>
                         <div class="rotom-ai-body">
                             <div class="ai-header-row">
-                                <div
-                                    style="font-family: var(--font-heading); font-weight: 700; color: #FFF; font-size: 1rem;">
+                                <div style="font-family: var(--font-heading); font-weight: 700; color: #FFF; font-size: 1rem;">
                                     DIAGNÓSTICO ROTOM AI
                                 </div>
                                 <div class="ai-grade-badge">RANGO DEFENSIVO: {{ teamDiagnostics.grade }}</div>
@@ -766,8 +828,7 @@
                             </p>
 
                             <!-- Alertas dinámicas -->
-                            <div v-for="(alert, i) in teamDiagnostics.alerts" :key="i" class="ai-alert-pill"
-                                :class="alert.type">
+                            <div v-for="(alert, i) in teamDiagnostics.alerts" :key="i" class="ai-alert-pill" :class="alert.type">
                                 <strong>{{ alert.icon }} {{ alert.title }}</strong>: {{ alert.desc }}
                             </div>
                         </div>
@@ -800,31 +861,23 @@
 
                         <!-- ====== VISTA AMIGABLE ====== -->
                         <div v-else-if="matrixView === 'friendly'">
-
-                            <!-- Explicación para todo público -->
                             <div class="friendly-explainer">
                                 <div class="friendly-explainer-icon">💡</div>
                                 <div class="friendly-explainer-text">
-                                    Aquí ves cómo tu equipo aguanta los <strong>18 tipos de ataques</strong> posibles en
-                                    Pokémon.
-                                    <strong>Rojo</strong> = peligro (muchos débiles), <strong>Verde</strong> = fuerte
-                                    (muchos resistes), <strong>Morado</strong> = inmune.
-                                    ¡El objetivo es tener el menor número de rojo posible!
+                                    Aquí ves cómo tu equipo aguanta los <strong>18 tipos de ataques</strong> posibles en Pokémon.
+                                    <strong>Rojo</strong> = peligro (muchos débiles), <strong>Verde</strong> = fuerte (muchos resistes), <strong>Morado</strong> = inmune.
                                 </div>
                             </div>
 
-                            <!-- CRÍTICO: Muchos débiles -->
+                            <!-- CRÍTICO -->
                             <div class="friendly-matrix-section" v-if="friendlyMatrix.critical.length">
                                 <div class="friendly-section-header danger-header">
                                     <div class="friendly-section-icon">🚨</div>
                                     <div class="friendly-section-info">
-                                        <div class="friendly-section-title" style="color: var(--color-danger);">¡PELIGRO
-                                            CRÍTICO!</div>
-                                        <div class="friendly-section-desc">Estos tipos hacen MUCHO daño a 3 o más
-                                            Pokémon de tu equipo, sin que nadie los resista. ¡Urgente cambiar!</div>
+                                        <div class="friendly-section-title" style="color: var(--color-danger);">¡PELIGRO CRÍTICO!</div>
+                                        <div class="friendly-section-desc">Estos tipos hacen MUCHO daño a 3 o más Pokémon de tu equipo sin resistencias.</div>
                                     </div>
-                                    <div class="friendly-section-count" style="color: var(--color-danger);">{{
-                                        friendlyMatrix.critical.length }}</div>
+                                    <div class="friendly-section-count" style="color: var(--color-danger);">{{ friendlyMatrix.critical.length }}</div>
                                 </div>
                                 <div class="friendly-types-row">
                                     <div v-for="m in friendlyMatrix.critical" :key="m.type" class="friendly-type-chip"
@@ -835,18 +888,15 @@
                                 </div>
                             </div>
 
-                            <!-- Débil -->
+                            <!-- DÉBIL -->
                             <div class="friendly-matrix-section" v-if="friendlyMatrix.danger.length">
                                 <div class="friendly-section-header warning-header">
                                     <div class="friendly-section-icon">⚠️</div>
                                     <div class="friendly-section-info">
-                                        <div class="friendly-section-title" style="color: var(--color-warning);">
-                                            DEBILIDADES COMPARTIDAS</div>
-                                        <div class="friendly-section-desc">Varios Pokémon sufren daño extra de estos
-                                            tipos. Considera incluir uno que los resista.</div>
+                                        <div class="friendly-section-title" style="color: var(--color-warning);">DEBILIDADES COMPARTIDAS</div>
+                                        <div class="friendly-section-desc">Varios Pokémon sufren daño extra de estos tipos.</div>
                                     </div>
-                                    <div class="friendly-section-count" style="color: var(--color-warning);">{{
-                                        friendlyMatrix.danger.length }}</div>
+                                    <div class="friendly-section-count" style="color: var(--color-warning);">{{ friendlyMatrix.danger.length }}</div>
                                 </div>
                                 <div class="friendly-types-row">
                                     <div v-for="m in friendlyMatrix.danger" :key="m.type" class="friendly-type-chip"
@@ -857,17 +907,15 @@
                                 </div>
                             </div>
 
-                            <!-- Equilibrado -->
+                            <!-- EQUILIBRADO -->
                             <div class="friendly-matrix-section" v-if="friendlyMatrix.balanced.length">
                                 <div class="friendly-section-header neutral-header">
                                     <div class="friendly-section-icon">⚖️</div>
                                     <div class="friendly-section-info">
                                         <div class="friendly-section-title">BIEN EQUILIBRADO</div>
-                                        <div class="friendly-section-desc">Hay paridad: algunos resisten tanto como los
-                                            que son débiles. Situación aceptable.</div>
+                                        <div class="friendly-section-desc">Hay paridad: tantos resisten como los que son débiles.</div>
                                     </div>
-                                    <div class="friendly-section-count" style="color: var(--text-secondary);">{{
-                                        friendlyMatrix.balanced.length }}</div>
+                                    <div class="friendly-section-count" style="color: var(--text-secondary);">{{ friendlyMatrix.balanced.length }}</div>
                                 </div>
                                 <div class="friendly-types-row">
                                     <div v-for="m in friendlyMatrix.balanced" :key="m.type" class="friendly-type-chip"
@@ -877,18 +925,15 @@
                                 </div>
                             </div>
 
-                            <!-- Buena Resistencia -->
+                            <!-- BUENA COBERTURA -->
                             <div class="friendly-matrix-section" v-if="friendlyMatrix.fortress.length">
                                 <div class="friendly-section-header success-header">
                                     <div class="friendly-section-icon">🛡️</div>
                                     <div class="friendly-section-info">
-                                        <div class="friendly-section-title" style="color: var(--color-success);">BUENA
-                                            COBERTURA</div>
-                                        <div class="friendly-section-desc">¡Tu equipo resiste bien estos tipos! Más
-                                            Pokémon los resisten de los que les hacen daño extra.</div>
+                                        <div class="friendly-section-title" style="color: var(--color-success);">BUENA COBERTURA</div>
+                                        <div class="friendly-section-desc">¡Tu equipo resiste bien estos tipos!</div>
                                     </div>
-                                    <div class="friendly-section-count" style="color: var(--color-success);">{{
-                                        friendlyMatrix.fortress.length }}</div>
+                                    <div class="friendly-section-count" style="color: var(--color-success);">{{ friendlyMatrix.fortress.length }}</div>
                                 </div>
                                 <div class="friendly-types-row">
                                     <div v-for="m in friendlyMatrix.fortress" :key="m.type" class="friendly-type-chip"
@@ -899,31 +944,27 @@
                                 </div>
                             </div>
 
-                            <!-- Inmunidades -->
+                            <!-- INMUNIDADES -->
                             <div class="friendly-matrix-section" v-if="friendlyMatrix.immune.length">
                                 <div class="friendly-section-header immune-header">
                                     <div class="friendly-section-icon">✨</div>
                                     <div class="friendly-section-info">
-                                        <div class="friendly-section-title" style="color: var(--color-immune);">
-                                            INMUNIDADES</div>
-                                        <div class="friendly-section-desc">Algún Pokémon de tu equipo es COMPLETAMENTE
-                                            INMUNE — ese tipo no les hace absolutamente nada.</div>
+                                        <div class="friendly-section-title" style="color: var(--color-immune);">INMUNIDADES</div>
+                                        <div class="friendly-section-desc">Pokémon de tu equipo son COMPLETAMENTE INMUNES a estos tipos.</div>
                                     </div>
-                                    <div class="friendly-section-count" style="color: var(--color-immune);">{{
-                                        friendlyMatrix.immune.length }}</div>
+                                    <div class="friendly-section-count" style="color: var(--color-immune);">{{ friendlyMatrix.immune.length }}</div>
                                 </div>
                                 <div class="friendly-types-row">
                                     <div v-for="m in friendlyMatrix.immune" :key="m.type" class="friendly-type-chip"
                                         :style="{ backgroundColor: m.color }">
                                         {{ m.nameEs }}
-                                        <span class="chip-mult">{{ m.immuneCount }} inmune{{ m.immuneCount > 1 ? 's' :
-                                            '' }}</span>
+                                        <span class="chip-mult">{{ m.immuneCount }} inmune{{ m.immuneCount > 1 ? 's' : '' }}</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- ====== VISTA DETALLADA (Tarjetas Clásicas) ====== -->
+                        <!-- ====== VISTA DETALLADA ====== -->
                         <div v-else class="matrix-grid-18">
                             <div v-for="m in teamEffectivenessMatrix" :key="m.type" class="matrix-type-card" :class="{
                                     'danger-card': m.status === 'critical_danger' || m.status === 'danger',
